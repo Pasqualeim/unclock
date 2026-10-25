@@ -97,8 +97,8 @@ Installazione su emulatore: `adb install -r app/build/outputs/apk/debug/app-debu
 | [`docs/PUBLISHING.md`](docs/PUBLISHING.md) | Guida passo passo per pubblicare su Google Play (riutilizzabile per altre app) |
 | [`docs/store/LISTING.md`](docs/store/LISTING.md) | Scheda dello store: testi IT/EN, screenshot, risposte ai moduli di Play Console |
 
-Il sito dell'app (presentazione e iscrizione al test chiuso) è in un repository separato, `nook-site`: HTML statico su Netlify, iscrizioni con Netlify Forms.
+Il sito dell'app (presentazione e iscrizione al test chiuso) è in un repository separato, `nook-site`: HTML statico su Netlify, una mail di benvenuto con i link al test (modulo Netlify Forms + funzione Resend).
 
 ## Privacy
 
-L'app legge solo il **nome del pacchetto** delle notifiche in arrivo, per decidere se rimuoverle. Non legge, salva né invia il contenuto delle notifiche. Le impostazioni restano sul dispositivo e l'app non ha backend né analytics. Informativa completa: https://pasqualeim.github.io/NotificationBlocker/
+L'app legge solo il **nome del pacchetto** delle notifiche in arrivo, per decidere se rimuoverle. Non legge, salva né invia il contenuto delle notifiche. Le impostazioni, lo storico del tempo libero e i conteggi delle notifiche trattenute (nome dell'app, mai il contenuto) restano sul dispositivo e l'app non ha backend né analytics. Informativa completa: https://getunclock.app/privacy

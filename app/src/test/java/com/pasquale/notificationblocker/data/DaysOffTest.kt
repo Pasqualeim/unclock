@@ -25,6 +25,20 @@ class DaysOffTest {
     }
 
     @Test
+    fun prune_keepsARangeWholeUntilItsLastDay_andDropsOldOneOffs() {
+        val today = LocalDate.of(2026, 11, 10)
+        val running = DaysOff.rangePauses("off1", LocalDate.of(2026, 11, 2), LocalDate.of(2026, 11, 12))
+        val over = DaysOff.rangePauses("off2", LocalDate.of(2026, 10, 1), LocalDate.of(2026, 10, 3))
+        val lastNight = QuickPause.create(LocalDate.of(2026, 11, 9).atTime(23, 30), 60)
+        val older = QuickPause.create(LocalDate.of(2026, 11, 8).atTime(10, 0), 60)
+        val weekly = Pause("p1", "Lunch", 13 * 60, 14 * 60)
+
+        val kept = DaysOff.prune(running + over + lastNight + older + weekly, today)
+
+        assertEquals(running + lastNight + weekly, kept)
+    }
+
+    @Test
     fun range_blocksEveryDayOfIt_andNothingAfter() {
         val range = DaysOff.rangePauses("off1", LocalDate.of(2026, 11, 6), LocalDate.of(2026, 11, 2))
         assertEquals(5, range.size)

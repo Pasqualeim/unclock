@@ -15,6 +15,6 @@ What you keep in sync:
 - `NotificationBlocker/docs/store/LISTING.md`: store texts IT/EN and the Play Console answers. A new permission, data flow or feature changes the Data safety answers.
 - `NotificationBlocker/CLAUDE.md` and `nook-site/CLAUDE.md`: architecture, keys, rules, when the code they describe changes.
 - Site facts: permissions (no internet), Android 9+, free with no ads, the window applies every day, paused notifications do not come back, privacy promises in `/privacy`.
-- The app's `privacy_policy_url` and `docs/index.html` (GitHub Pages copy) until the site has its domain.
+- The app's `privacy_policy_url` (https://getunclock.app/privacy) and `docs/index.html` (only a redirect to it).
 
 For a check, verify the merged manifest or code rather than trusting another doc. Edit docs only; for site pages or app strings, report the exact change needed so the main session can make it (with `copywriter` for wording). Report: what was stale, what you fixed, what still needs someone else.

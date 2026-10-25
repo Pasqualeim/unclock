@@ -83,12 +83,10 @@ object ZenNotificationManager {
         }
         if (state.contentKey == postedKey) return
         ensureChannel(app)
-        if (ContextCompat.checkSelfPermission(app, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED ||
-            Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU
-        ) {
-            manager.notify(NOTIFICATION_ID, build(app, state))
-            postedKey = state.contentKey
-        }
+        // canPost() above checked POST_NOTIFICATIONS; lint cannot see it through the helper
+        @Suppress("MissingPermission")
+        manager.notify(NOTIFICATION_ID, build(app, state))
+        postedKey = state.contentKey
     }
 
     /** Ends the pauses in progress early: work notifications come through until the next pause. */

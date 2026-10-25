@@ -15,9 +15,9 @@ Tieni questo file allineato all'app: una nuova funzione, un nuovo permesso o un 
 | Categoria | Produttività |
 | Tag (fino a 5) | Produttività, Strumenti, Benessere (scegli tra quelli proposti da Play Console) |
 | Prezzo | Gratis, senza acquisti in app né pubblicità |
-| Email di contatto | pasquale.ercolino98@gmail.com (pubblica sulla scheda: puoi usarne una dedicata) |
-| Sito web | https://unclock.netlify.app/it/ (facoltativo) |
-| Informativa sulla privacy (URL da inserire in Play Console) | https://unclock.netlify.app/it/privacy/ (dal 20/10/2026; la copia GitHub Pages resta per l'app fino alla prossima release) |
+| Email di contatto | pasquale@getunclock.app (pubblica sulla scheda; inoltrata alla Gmail da Cloudflare Email Routing) |
+| Sito web | https://getunclock.app/it/ (facoltativo) |
+| Informativa sulla privacy (URL da inserire in Play Console) | https://getunclock.app/privacy (dal 25/10/2026; è anche l'URL di `privacy_policy_url` nell'app) |
 | Lingua predefinita della scheda | Italiano – it-IT (scelta alla creazione della nuova app, 21/10/2026), con traduzione Inglese (Stati Uniti) – en-US |
 
 ## Testi della scheda
@@ -152,9 +152,9 @@ Come rifarli (dopo un cambio di interfaccia o delle scene):
 ```bash
 ./gradlew assembleDebug && adb install -r app/build/outputs/apk/debug/app-debug.apk
 tools/store/capture_screenshots.sh /tmp/nook-raw          # emulatore acceso, testo e tema di default; LANGS=it-IT per una lingua sola. Scrive 1_break, 2_shade, 3_apps, 4_report, 5_dark, 6_breaks, 7_stats (dati demo: tools/store/demo_prefs.py)
-python3 tools/store/compose_screenshots.py /tmp/nook-raw   # legge i font da ../nook-site/public/assets/fonts
+python3 tools/store/compose_screenshots.py /tmp/nook-raw   # Fraunces da tools/store/fonts, Inter da ../nook-site/public/assets/fonts
 ./gradlew testDebugUnitTest --tests '*ZenSceneTest*'     # scene per la feature graphic
-python3 tools/store/feature_graphic.py                    # legge i font da ../nook-site/public/assets/fonts
+python3 tools/store/feature_graphic.py                    # Fraunces da tools/store/fonts, Inter da ../nook-site/public/assets/fonts
 python3 tools/icon/launcher_icon.py                     # icona 512
 ```
 
@@ -171,7 +171,7 @@ Cose da sapere sulla cattura (`capture_screenshots.sh`, ~4 minuti):
 Risposte basate sul codice attuale (nessun permesso `INTERNET`, nessuna libreria di analisi o pubblicità, dati solo in `SharedPreferences`). Se il codice cambia, ricontrollale.
 
 ### Norme sulla privacy
-URL: `https://unclock.netlify.app/it/privacy/`
+URL: `https://getunclock.app/privacy`
 
 ### Accesso all'app
 **Tutte le funzionalità sono disponibili senza restrizioni di accesso** (niente login). Nel campo delle istruzioni, facoltativo ma utile ai revisori, incolla:
@@ -204,7 +204,7 @@ Unclock only reads the package name of each notification to decide whether to re
 ### Sicurezza dei dati (Data safety)
 - L'app raccoglie o condivide uno dei tipi di dati utente richiesti? **No.**
   - Motivo: Unclock legge il nome del pacchetto delle notifiche e lo usa solo sul telefono, senza inviarlo a nessuno. Google non considera "raccolti" i dati trattati solo sul dispositivo.
-  - Il backup automatico di Android salva le impostazioni e lo storico del tempo libero nell'account Google dell'utente, gestito dal sistema: lo sviluppatore non riceve niente.
+  - Il backup automatico di Android salva le impostazioni, l'orario di sonno, lo storico del tempo libero (minuti per giorno e fasce orarie) e i conteggi delle notifiche trattenute (nome dell'app e impronta della chiave, mai il contenuto) nell'account Google dell'utente, gestito dal sistema: lo sviluppatore non riceve niente.
 - Con "No" il modulo salta le domande sulla crittografia e sulla cancellazione dei dati.
 - Cancellazione account: non applicabile, l'app non ha account.
 

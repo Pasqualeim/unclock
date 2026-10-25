@@ -13,7 +13,7 @@ import com.pasquale.notificationblocker.notification.ZenNotificationManager
 import java.time.LocalDateTime
 
 /**
- * Quick Settings tile "Unplug & Sun": one tap toggles blocking. The app picks up the change through
+ * Quick Settings tile "Unclock": one tap toggles blocking. The app picks up the change through
  * its SharedPreferences listener, the zen notification is refreshed right away.
  *
  * Declared as an active tile: it only redraws when the shade opens or when [requestUpdate] is called

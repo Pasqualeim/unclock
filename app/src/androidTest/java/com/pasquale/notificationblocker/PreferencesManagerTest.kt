@@ -2,6 +2,7 @@ package com.pasquale.notificationblocker
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.pasquale.notificationblocker.data.Pause
 import com.pasquale.notificationblocker.data.PreferencesManager
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -35,8 +36,8 @@ class PreferencesManagerTest {
     @Test
     fun defaults_areOffAndTenToSeven() {
         assertFalse(prefs.isBlockingEnabled)
-        assertEquals(22 * 60, prefs.startTimeMinutes)
-        assertEquals(7 * 60, prefs.endTimeMinutes)
+        assertEquals(22 * 60, prefs.pauses.single().start)
+        assertEquals(7 * 60, prefs.pauses.single().end)
         assertTrue(prefs.getBlockedApps().isEmpty())
         assertFalse(prefs.shouldBlock("com.example.work"))
     }
@@ -53,8 +54,7 @@ class PreferencesManagerTest {
     @Test
     fun shouldBlock_wholeDayWindowBlocksOnlySelectedApps() {
         prefs.isBlockingEnabled = true
-        prefs.startTimeMinutes = 480
-        prefs.endTimeMinutes = 480 // start == end: the whole day
+        prefs.pauses = listOf(Pause("main", "", 480, 480)) // start == end: the whole day
         prefs.setAppBlocked("work.app", true)
         assertTrue(prefs.shouldBlock("work.app"))
         assertFalse(prefs.shouldBlock("friends.app"))

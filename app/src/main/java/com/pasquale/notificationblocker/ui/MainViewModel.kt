@@ -73,7 +73,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         preferencesManager.workSchedule = schedule
         _workSchedule.value = schedule
         onPausesChanged()
-        refreshZenNotification()
     }
 
     // When the user usually sleeps: held, but not counted as free time
@@ -259,21 +258,17 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         _isBlockingEnabled.value = true
         preferencesManager.zenDismissedWindow = null
         refreshOffHoursStatus()
-        refreshZenNotification()
-        refreshLife()
         ZenTileService.requestUpdate(getApplication())
     }
 
     fun addDaysOff(first: LocalDate, last: LocalDate) {
         preferencesManager.addDaysOff(first, last)
         onPausesChanged()
-        refreshZenNotification()
     }
 
     fun removeDaysOff(id: String) {
         preferencesManager.removeDaysOff(id)
         onPausesChanged()
-        refreshZenNotification()
     }
 
     fun setSleepWindow(window: SleepWindow) {
@@ -285,7 +280,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun setHolidaysEnabled(enabled: Boolean) {
         preferencesManager.holidaysEnabled = enabled
         onPausesChanged()
-        refreshZenNotification()
     }
 
     /** True on a fresh install until the first-launch setup is done. Read once, when the app starts. */
@@ -296,8 +290,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         preferencesManager.completeOnboarding(schedule, pauses)
         _isBlockingEnabled.value = true
         onPausesChanged()
-        refreshZenNotification()
-        refreshLife()
     }
 
     /** Adds [pause], or replaces the one with the same id. */
@@ -333,6 +325,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     /** A fresh id for a new pause: short, stable, never reused. */
     fun newPauseId(): String = "p" + System.currentTimeMillis().toString(36)
 
+    /** After any change of the pauses: refreshes the status, the break notification, Life copy and the tile. */
     private fun onPausesChanged() {
         refreshOffHoursStatus()
         ZenTileService.requestUpdate(getApplication())

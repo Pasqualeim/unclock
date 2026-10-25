@@ -4,7 +4,7 @@
 Background: a frame of the off-work scene, rendered by the unit tests
 (`./gradlew testDebugUnitTest --tests '*ZenSceneTest*'` writes app/build/zen-previews/).
 On the left, the brand terracotta fading into the scene, the padlock from the launcher icon, the name and a line.
-Type as on the site (Fraunces 600 for the name, Inter for the line), read from the site repo's self-hosted fonts.
+Fraunces 600 for the name (kept in tools/store/fonts), Inter for the line (read from the site repo's self-hosted fonts).
 
 Usage: python3 tools/store/feature_graphic.py [path/to/nook-site]   (default: ../nook-site next to this repo)
 Writes docs/store/feature-graphic-{it,en}.png.
@@ -67,7 +67,7 @@ def main(site):
         img = base.copy()
         img.alpha_composite(m, (76, 104))
         d = ImageDraw.Draw(img)
-        d.text((70, 268), "Unclock", font=font(fonts / "fraunces-normal.woff2", 104, Weight=600, **{"Optical Size": 144}), fill=CREAM)
+        d.text((70, 268), "Unclock", font=font(Path(__file__).resolve().parent / "fonts/fraunces-normal.woff2", 104, Weight=600, **{"Optical Size": 144}), fill=CREAM)
         d.text((76, 392), line, font=font(fonts / "inter-normal.woff2", 36, Weight=600), fill=CREAM)
         out = ROOT / f"docs/store/feature-graphic-{lang}.png"
         img.convert("RGB").save(out, optimize=True)

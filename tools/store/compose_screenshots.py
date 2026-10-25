@@ -5,7 +5,7 @@ Google Play rejects raw phone captures whose long side is more than twice the sh
 (1080 x 2400 is 2.22), so every capture is framed here, inside a phone bezel that bleeds off the bottom edge. Captions follow the copy rules of
 docs/DESIGN_SYSTEM.md ("Testi e tono").
 
-Type as on the site: Fraunces 600 for the titles, Inter for the subtitles, from the site repo's fonts.
+Type as on the site: Fraunces 600 for the titles (tools/store/fonts), Inter for the subtitles (the site repo's fonts).
 
 Usage: python3 tools/store/compose_screenshots.py RAW_DIR [path/to/nook-site]   (default: ../nook-site)
 RAW_DIR holds it-IT/ and en-US/ with the captures written by tools/store/capture_screenshots.sh.
@@ -19,7 +19,9 @@ RAW=sys.argv[1]
 FONTS=Path(sys.argv[2] if len(sys.argv)>2 else Path(__file__).resolve().parents[3]/'nook-site')/'public/assets/fonts'
 W,H=1080,1920
 def font(name, size, **axes):
-    f=ImageFont.truetype(str(FONTS/name),size)
+    # Fraunces is kept in tools/store/fonts (the site no longer uses it); Inter comes from the site
+    own=Path(__file__).resolve().parent/'fonts'/name
+    f=ImageFont.truetype(str(own if own.exists() else FONTS/name),size)
     ax=f.get_variation_axes(); f.set_variation_by_axes([axes.get(a['name'].decode(),a['default']) for a in ax]); return f
 LIGHT=dict(bg=(235,205,188), bg2=(246,226,212), title=(58,43,34), sub=(101,80,63))
 DARK=dict(bg=(27,23,20), bg2=(46,38,33), title=(242,231,221), sub=(214,197,184))

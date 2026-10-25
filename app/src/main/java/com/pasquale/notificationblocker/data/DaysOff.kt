@@ -41,6 +41,17 @@ object DaysOff {
             .toList()
     }
 
+    /**
+     * The one-off pauses still worth keeping on [today]: weekly ones, and dated ones from yesterday on (a
+     * quick pause from last night may still be running). A range of days off stays whole until its last
+     * day is past, so its dates never shrink one by one.
+     */
+    fun prune(oneOffs: List<Pause>, today: LocalDate): List<Pause> {
+        val yesterday = today.minusDays(1)
+        val liveRanges = oneOffs.filter { isRange(it) && !it.date!!.isBefore(yesterday) }.mapTo(HashSet()) { it.id }
+        return oneOffs.filter { it.date == null || !it.date.isBefore(yesterday) || (isRange(it) && it.id in liveRanges) }
+    }
+
     /** The ranges in a list of one-off pauses, earliest first. */
     fun ranges(oneOffs: List<Pause>): List<Range> =
         oneOffs.filter { isRange(it) }

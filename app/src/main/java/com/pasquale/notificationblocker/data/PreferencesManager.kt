@@ -38,11 +38,7 @@ class PreferencesManager private constructor(context: Context) {
         set(value) = settleThen { putOneOffs(value) }
 
     private fun SharedPreferences.Editor.putOneOffs(value: List<Pause>) {
-        val yesterday = LocalDate.now().minusDays(1)
-        // A range of days off stays whole until its last day is past, so its dates never shrink one by one
-        val liveRanges = value.filter { DaysOff.isRange(it) && !it.date!!.isBefore(yesterday) }.mapTo(HashSet()) { it.id }
-        val kept = value.filter { it.date == null || !it.date.isBefore(yesterday) || (DaysOff.isRange(it) && it.id in liveRanges) }
-        putString(KEY_ONE_OFF_PAUSES, PauseCodec.encode(kept))
+        putString(KEY_ONE_OFF_PAUSES, PauseCodec.encode(DaysOff.prune(value, LocalDate.now())))
     }
 
     /**
@@ -142,21 +138,6 @@ class PreferencesManager private constructor(context: Context) {
         start = prefs.getInt(KEY_START_TIME, 22 * 60), // Default 22:00
         end = prefs.getInt(KEY_END_TIME, 7 * 60), // Default 07:00
     )
-
-    // The Home screen still edits one pause (the first) until it gets its own pause list
-    var startTimeMinutes: Int
-        get() = (pauses.firstOrNull() ?: legacyPause()).start
-        set(value) = updateFirstPause { it.copy(start = value) }
-
-    var endTimeMinutes: Int
-        get() = (pauses.firstOrNull() ?: legacyPause()).end
-        set(value) = updateFirstPause { it.copy(end = value) }
-
-    @Synchronized
-    private fun updateFirstPause(change: (Pause) -> Pause) {
-        val all = pauses
-        pauses = listOf(change(all.firstOrNull() ?: legacyPause())) + all.drop(1)
-    }
 
     // Asked once: the user tapped "Not now" (or denied) on the zen notification prompt
     var zenPromptDismissed: Boolean

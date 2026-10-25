@@ -30,7 +30,7 @@
     <string name="permission_warning_text">To pause your work apps, Unclock needs to see the notifications you receive. It only checks which app sent each one. It doesn\'t read or save what they say, and nothing leaves your phone. You can turn this off anytime in Settings.</string>
     <string name="permission_warning_button">Open settings</string>
     <string name="privacy_policy_link">Privacy policy</string>
-    <string name="privacy_policy_url" translatable="false">https://pasqualeim.github.io/NotificationBlocker/</string>
+    <string name="privacy_policy_url" translatable="false">https://getunclock.app/privacy</string>
 
     <!-- Schedule Section -->
     <string name="duration_format">%1$d h %2$d min</string>
