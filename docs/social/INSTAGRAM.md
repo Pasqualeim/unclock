@@ -77,7 +77,7 @@ Immagine: `home-it.webp` (la schermata Oggi).
 
 Hashtag, uno o due gruppi al massimo: `#android #tempolibero #disconnessione #worklifebalance #indiedev`
 
-## Prompt per Antigravity (card di testo)
+## Prompt per le card di testo
 
 ```
 Crea due immagini 1080x1350 (4:5) per Instagram, stile piatto e calmo.
