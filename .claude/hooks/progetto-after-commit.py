@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""PostToolUse hook: after a Bash call that made a git commit, tell Claude to sync Trello now."""
+"""PostToolUse hook: after a Bash call that made a git commit, tell Claude to update PROGETTO.md now."""
 import json
 import re
 import sys
@@ -14,10 +14,9 @@ if made_commit and "nothing to commit" not in output:
         "hookSpecificOutput": {
             "hookEventName": "PostToolUse",
             "additionalContext": (
-                "Hai appena fatto un commit. In questo stesso turno, prima di chiudere: "
-                "aggiorna la bacheca Trello Unclock (aggiungi il punto alla carta del diario di oggi "
-                "in \"✅ Fatto\", o creala; sposta o chiudi la carta del task se è finito; crea la carta "
-                "di un task nuovo), poi PROGETTO.md e docs/ROADMAP.md se un task è cambiato."
+                "Hai appena fatto un commit. In questo stesso turno: aggiorna la tabella Task di "
+                "PROGETTO.md (segna fatto, aggiungi il punto nuovo, riordina) e la lista dei task "
+                "della sessione, poi docs/ROADMAP.md se una voce è cambiata."
             ),
         }
     }))

@@ -1,6 +1,6 @@
 # Progetto Unclock
 
-Quadro breve per il capo progetto e i subagenti. Il dettaglio resta in `docs/ROADMAP.md` (fonte di verità) e sulla bacheca Trello "Unclock" (vista rapida). Qui solo visione, decisioni e task che toccano più aree.
+Quadro breve per il capo progetto e i subagenti. Il dettaglio resta in `docs/ROADMAP.md` (fonte di verità). Qui visione, decisioni e **la lista dei punti da fare** (sezione Task): è l'unica, va tenuta aggiornata dopo ogni commit.
 
 ## Visione
 
@@ -24,7 +24,7 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 
 | Argomento | Padrone | Altrove solo un rimando |
 |---|---|---|
-| Stato e priorità (cosa è fatto, cosa manca) | `docs/ROADMAP.md` | PROGETTO.md (task fra le aree), Trello, `CLAUDE.md` "Priorities" |
+| Stato e priorità (cosa è fatto, cosa manca) | `docs/ROADMAP.md` | PROGETTO.md (lista dei punti), `CLAUDE.md` "Priorities" |
 | Visione, regole anti-stress | `docs/IDEA.md` | `CLAUDE.md`, agenti, `marketing/STRATEGY.md` |
 | Architettura app, regola di blocco, chiavi delle preferenze | `CLAUDE.md` (app) | ROADMAP, `REDESIGN.md` (storico) |
 | Colori, tipi, forme, tono dei testi, nome | `docs/DESIGN_SYSTEM.md` | `CLAUDE.md`, `nook-site/CLAUDE.md` |
@@ -46,21 +46,26 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 - 2026-10-26: profilo Instagram con un nome diverso dall'app; personaggio in sospeso (vedi sotto).
 - 2026-10-26: delega solo per lavoro vero (la prova di una bozza social è costata ~100k token): il capo progetto fa da sé domande, letture, modifiche piccole, analisi d'impatto e prove; il brief porta i fatti, gli agenti leggono il minimo; niente review per una stringa o una riga.
 - 2026-10-26: contro i documenti incoerenti: hook git di graphify in entrambi i repo (grafo aggiornato a ogni commit e checkout, zero token), `docs-auditor` in sola lettura lanciato dopo un rilascio, un cambio di permessi o dati, o su richiesta (mai ogni N modifiche), e la "Mappa dei fatti" qui sopra. Sfoltire i doppioni si fa dopo, a pezzi.
-- 2026-10-26: Trello si aggiorna dopo ogni commit, in tutti e due i repo (hook `.claude/hooks/trello-after-commit.py`); niente di fatto o deciso resta solo nella chat.
+- 2026-10-26: niente Trello (leggerlo e scriverlo costava troppi token). La lista dei punti è la sezione Task qui sotto, aggiornata dopo ogni commit in tutti e due i repo (hook `.claude/hooks/progetto-after-commit.py`); a inizio sessione il capo progetto la mette nel piano di Claude Code. Niente di fatto o deciso resta solo nella chat.
 - Niente pubblicazioni (deploy, push, post, mail, Play Console) senza ok di Pasquale.
 
 ## Task
 
-| Task | Area | Stato |
-|---|---|---|
-| Far provare l'app fino a 1.000 tester (tappe: 12, 100, 1.000) | Social, sito | In corso |
-| Controllare il limite mensile di Netlify Forms se le iscrizioni superano le 100 al mese (il tetto di 50 mail al giorno basta) | Sito | Dopo (Pasquale) |
-| Confermare l'approvazione del test chiuso su Play Console | Play | In attesa di Pasquale |
-| Aprire (o rinominare) il profilo `@pasquale.builds` e seguire `marketing/PIANO_INSTAGRAM.md` | Social | Da fare (Pasquale) |
-| Prova completa da un altro account Google (pagina tester, gruppo, opt-in, installazione) | Sito, Play | Fatto (2026-10-26) |
-| Attivare la notifica email di Netlify Forms per il modulo `signup` | Sito | Da fare (Pasquale) |
-| Sfoltire i doppioni indicati dalla Mappa dei fatti | Tutte | In corso: ROADMAP righe 3, 3a, 3b fatte (26/10/2026); il resto a pezzi |
-| Struttura capo progetto + subagenti, auditor, mappa dei fatti | Tutte | Fatto (2026-10-26) |
+In ordine di priorità. Chi: [P] Pasquale, [C] Claude.
+
+| # | Task | Chi | Stato |
+|---|---|---|---|
+| 1 | Aprire (o rinominare) il profilo Instagram `@pasquale.builds`: Creator, nome "Pasquale", tua foto, bio, link getunclock.app/it/prova; poi dire quale bio | P | Da fare |
+| 2 | Confermare in Play Console l'approvazione del test chiuso (in revisione dal 22/10) | P | In attesa |
+| 3 | Annunciare il progetto alla rete personale, prima del primo post | P | Da fare |
+| 4 | Prompt e testi delle prime 4 settimane di Instagram (dopo il punto 1), passati da humanizer | C | Da fare |
+| 5 | Attivare la notifica email di Netlify Forms per il modulo `signup` | P | Da fare |
+| 6 | Sfoltire i doppioni della Mappa dei fatti, prossimo il CLAUDE.md dell'app (ROADMAP 3, 3a, 3b fatte) | C | In corso |
+| — | Obiettivo di fondo: far provare l'app a più persone possibile prima del Play Store (tappe 12, 100, oltre) | P, C | In corso |
+| — | Ricorrente: a ogni cambio visibile dell'app, rifare screenshot e immagini del sito | C | Sempre |
+| — | Dopo: controllare il limite mensile di Netlify Forms se le iscrizioni superano le 100 al mese | P | Dopo |
+
+Fatto di recente: prova da un altro account Google (26/10), struttura capo progetto con subagenti, auditor e mappa dei fatti (26/10), informativa e anteprime del sito corrette (26/10). Lo storico completo è nella ROADMAP e in `git log`.
 
 ## Idee in sospeso
 

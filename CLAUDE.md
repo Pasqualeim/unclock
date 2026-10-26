@@ -199,24 +199,23 @@ The owner wants to be told when a request is not the most useful thing to do now
 
 If the request sits clearly below an open item above (e.g. new scenes, nice-to-have features while the testing phase is still open), say so **before** doing it, in two or three lines: what it is, why it can wait, what should come first. Then do what the owner decides; it is a warning, never a refusal. Do not warn on quick questions, bug fixes, things that unblock the testing phase, or when the owner already said they want to do it anyway in this conversation. Warn once per topic, not at every turn.
 
-### Trello board
+### Task list
 
-The owner follows progress on the Trello board "Unclock" (https://trello.com/b/B0iwIzXW/unclock, Trello MCP tools). `docs/ROADMAP.md` stays the source of truth; the board is its quick view and must not drift from it.
+There is no Trello board any more (it cost too many tokens). The one list of open points is the "Task" table in `PROGETTO.md`, in priority order, with who does each one.
 
-- **Read** it when picking what to do next or when the owner asks about progress: the owner may have moved or added cards there (a card in "🔨 In corso" is what they are working on; a new card is a request to weigh against the priorities above).
-- **Update** it after **every commit**, in either repo, in the same turn (a PostToolUse hook, `.claude/hooks/trello-after-commit.py`, reminds you right after the commit), and whenever a ROADMAP item is done, added, reordered or dropped. Nothing done or decided may live only in the chat: if it is not on the board, in the ROADMAP or in `PROGETTO.md`, it is lost: move the card, or add a dated card on top of "✅ Fatto (diario, dal più recente)" (title `YYYY-MM-DD · what changed`, a few bullets, marked done). Lists: "🔨 In corso", "🎯 Fase di test (priorità)" (ROADMAP section 0, in order), "💡 Dopo" (sections 2-4), "🚀 Pubblicazione Play" (section 5), "✅ Fatto". Titles start with `[Claude]` or `[Pasquale]` for who does it.
-- Subagents have no Trello tools: the main session does it, right after updating the ROADMAP.
+- **Session start:** load that table into Claude Code's own task list (`update_plan`) so the app shows it, and work from it.
+- **After every commit**, in either repo, in the same turn: update the table (mark done, add the new task, reorder), and the ROADMAP if an item changed. A PostToolUse hook (`.claude/hooks/progetto-after-commit.py`) reminds you right after each commit. Nothing done or decided may live only in the chat.
 
 ## Project lead (capo progetto)
 
 The main session is the project lead for three linked areas: app (this repo), site (`~/Documents/Developer/nook-site`), Instagram (`marketing/`). `PROGETTO.md` (repo root) holds vision, folders, decisions, the cross-area task table and parked ideas; `docs/ROADMAP.md` stays the detailed source of truth.
 
-- **Session start:** read `PROGETTO.md` and give Pasquale a short status (in progress, waiting on him, next up), in Italian.
+- **Session start:** read `PROGETTO.md`, put its Task table in the task list, and give Pasquale a short status (in progress, waiting on him, next up), in Italian.
 - **Delegate only real work.** A subagent starts cold, and every tool call it makes resends its whole context (a short social draft cost ~100k tokens in the 2026-10-26 trial), so the default is to do the work yourself. Delegate only when one of these holds: the change spans several files with its own build/test loop (`app-dev`), it is real work in the site repo (`sito-dev`), Pasquale asked for a social draft (`social-manager`), an app diff is ready for commit (`android-reviewer`), or a docs check is due: after a release, after a permission or data-flow change, or when Pasquale asks (`docs-auditor`, never every N edits). Never delegate: questions, reads, one-file or one-string edits, impact analysis, planning, simulations or trials.
 - **Brief the subagent so it does not have to search:** put the facts it needs in the prompt (what changed, exact files and paths, the relevant rule quoted), say which docs it may skip, and ask for the short report its file defines. One subagent per task; do not run two on the same question.
 - **After every change**, judge its impact on the other two areas (visible app change → site screenshots/text, `marketing/DEV_LOG.md`, a social draft; permission or data flow → site privacy, `docs/store/LISTING.md`; site fact → app strings) and propose the follow-up tasks to Pasquale before doing them.
 - **Keep facts aligned** (formerly `docs-keeper`): each topic has one owner file, listed in "Mappa dei fatti" in `PROGETTO.md`. Write a fact in full only in its owner and link to it elsewhere; when two files disagree, the code wins, then the owner. A new topic that lands in several files gets a row in the map.
-- **Session end:** update `PROGETTO.md` (task table, decisions, parked ideas), the ROADMAP and Trello when something changed.
+- **Session end:** update `PROGETTO.md` (task table, decisions, parked ideas) and the ROADMAP when something changed.
 - **No publishing without Pasquale's ok:** no deploy, push of the site, Instagram post, email, Telegram message or Play Console action unless he says yes in this conversation.
 
 ## Agents
