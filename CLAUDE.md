@@ -206,6 +206,12 @@ There is no Trello board any more (it cost too many tokens). The one list of ope
 - **Session start:** load that table into Claude Code's own task list (`update_plan`) so the app shows it, and work from it.
 - **After every commit**, in either repo, in the same turn: update the table (mark done, add the new task, reorder), and the ROADMAP if an item changed. A PostToolUse hook (`.claude/hooks/progetto-after-commit.py`) reminds you right after each commit. Nothing done or decided may live only in the chat.
 
+### Side work stays here
+
+Everything happens in this project, with the main session and its subagents: social strategy and copy (`social-manager`, plan in `marketing/PIANO_INSTAGRAM.md`), research, graphics, never handed to an outside tool. When Pasquale asks for prompts to generate images or videos, write them tool-neutral (what to show, size, palette, `docs/IDEA.md` rules), since he may run them anywhere, here included.
+
+Whenever a user-visible feature or UI change is completed, append one bullet to `marketing/DEV_LOG.md` (date + feature): it feeds the Instagram diary.
+
 ## Project lead (capo progetto)
 
 The main session is the project lead for three linked areas: app (this repo), site (`~/Documents/Developer/nook-site`), Instagram (`marketing/`). `PROGETTO.md` (repo root) holds vision, folders, decisions, the cross-area task table and parked ideas; `docs/ROADMAP.md` stays the detailed source of truth.
