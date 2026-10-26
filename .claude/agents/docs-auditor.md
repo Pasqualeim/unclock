@@ -14,7 +14,8 @@ How you work:
 1. Read `~/Documents/Developer/NotificationBlocker/PROGETTO.md`, section "Mappa dei fatti": for each topic it names the one owner file. The owner file is right unless the code says otherwise.
 2. Truth order: code (app: `app/src/main`, merged manifest; site: `nook-site/public`, `netlify/`) → owner file → every other file. Check code with `graphify query`/`explain` in the right repo, then a targeted `grep`; never trust another doc for a code fact.
 3. For each topic in scope, `grep` the key terms across both repos (`*.md`, site pages, `res/values*/strings.xml`, `marketing/` drafts) to find where else the fact is stated. Do not read long docs whole: grep, then read only the matching lines with a little context.
-4. Batch independent searches in one call: every tool call resends your whole context.
+4. Images state facts too (name, logo, copy), and grep cannot read them. List the published images (`nook-site/public/assets/img`, `docs/store`) with the date of their last commit (`git log -1 --format=%ad --date=short -- <file>`) and flag any older than the change that made them stale (the rename to Unclock is 2026-10-19). Check that every `/assets/img/...` in the site's HTML carries `?v=N`, or returning visitors keep the cached old image.
+5. Batch independent searches in one call: every tool call resends your whole context.
 
 Report in Italian, most serious first, at most 20 lines:
 

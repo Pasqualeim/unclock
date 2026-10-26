@@ -36,6 +36,7 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 | Play Console, test chiuso, passi manuali | `docs/PUBLISHING.md` | ROADMAP (stato) |
 | Testi e grafica dello store | `docs/store/LISTING.md` | ROADMAP (stato) |
 | Instagram: strategia, calendario, novità | `marketing/STRATEGY.md`, `CALENDAR.md`, `DEV_LOG.md` | `docs/social/INSTAGRAM.md` (storico), PROGETTO.md |
+| Anteprima dei link (og-it/og-en: nome, icona, titolo) | `nook-site/tools/og_image.py` (rigenera le PNG) | `nook-site/CLAUDE.md` |
 | Versione dell'app (versionName, versionCode) | `app/build.gradle.kts` | `docs/store/LISTING.md` (aggiornata a ogni rilascio), ROADMAP, `PUBLISHING.md` |
 | Capo progetto e subagenti | `CLAUDE.md` app ("Project lead", "Agents") | PROGETTO.md (decisioni) |
 
