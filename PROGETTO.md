@@ -46,6 +46,7 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 - 2026-10-26: profilo Instagram con un nome diverso dall'app; personaggio in sospeso (vedi sotto).
 - 2026-10-26: delega solo per lavoro vero (la prova di una bozza social è costata ~100k token): il capo progetto fa da sé domande, letture, modifiche piccole, analisi d'impatto e prove; il brief porta i fatti, gli agenti leggono il minimo; niente review per una stringa o una riga.
 - 2026-10-26: contro i documenti incoerenti: hook git di graphify in entrambi i repo (grafo aggiornato a ogni commit e checkout, zero token), `docs-auditor` in sola lettura lanciato dopo un rilascio, un cambio di permessi o dati, o su richiesta (mai ogni N modifiche), e la "Mappa dei fatti" qui sopra. Sfoltire i doppioni si fa dopo, a pezzi.
+- 2026-10-26: Trello si aggiorna dopo ogni commit, in tutti e due i repo (hook `.claude/hooks/trello-after-commit.py`); niente di fatto o deciso resta solo nella chat.
 - Niente pubblicazioni (deploy, push, post, mail, Play Console) senza ok di Pasquale.
 
 ## Task
@@ -56,6 +57,7 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 | Confermare l'approvazione del test chiuso su Play Console | Play | In attesa di Pasquale |
 | Aprire (o rinominare) il profilo `@pasquale.builds` e seguire `marketing/PIANO_INSTAGRAM.md` | Social | Da fare (Pasquale) |
 | Prova completa da un altro account Google (pagina tester, gruppo, opt-in, installazione) | Sito, Play | Fatto (2026-10-26) |
+| Attivare la notifica email di Netlify Forms per il modulo `signup` | Sito | Da fare (Pasquale) |
 | Sfoltire i doppioni indicati dalla Mappa dei fatti | Tutte | In corso: ROADMAP righe 3, 3a, 3b fatte (26/10/2026); il resto a pezzi |
 | Struttura capo progetto + subagenti, auditor, mappa dei fatti | Tutte | Fatto (2026-10-26) |
 
