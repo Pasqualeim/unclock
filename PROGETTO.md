@@ -47,6 +47,7 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 - 2026-10-26: delega solo per lavoro vero (la prova di una bozza social è costata ~100k token): il capo progetto fa da sé domande, letture, modifiche piccole, analisi d'impatto e prove; il brief porta i fatti, gli agenti leggono il minimo; niente review per una stringa o una riga.
 - 2026-10-26: contro i documenti incoerenti: hook git di graphify in entrambi i repo (grafo aggiornato a ogni commit e checkout, zero token), `docs-auditor` in sola lettura lanciato dopo un rilascio, un cambio di permessi o dati, o su richiesta (mai ogni N modifiche), e la "Mappa dei fatti" qui sopra. Sfoltire i doppioni si fa dopo, a pezzi.
 - 2026-10-26: niente Trello (leggerlo e scriverlo costava troppi token). La lista dei punti è la sezione Task qui sotto, aggiornata dopo ogni commit in tutti e due i repo (hook `.claude/hooks/progetto-after-commit.py`); a inizio sessione il capo progetto la mette nel piano di Claude Code. Niente di fatto o deciso resta solo nella chat.
+- 2026-10-26: oltre a Instagram, i canali per trovare tester sconosciuti sono solo BetaList e Reddit (punti 4-6 dei Task). Gli scambi tra sviluppatori (r/AndroidClosedTesting) danno al massimo i 12 di Google, non utenti veri; niente servizi a pagamento di tester e niente premi.
 - Niente pubblicazioni (deploy, push, post, mail, Play Console) senza ok di Pasquale.
 
 ## Task
@@ -58,9 +59,12 @@ In ordine di priorità. Chi: [P] Pasquale, [C] Claude.
 | 1 | Aprire (o rinominare) il profilo Instagram `@pasquale.builds`: Creator, nome "Pasquale", tua foto, bio, link getunclock.app/it/prova; poi dire quale bio | P | Da fare |
 | 2 | Confermare in Play Console l'approvazione del test chiuso (in revisione dal 22/10) | P | In attesa |
 | 3 | Annunciare il progetto alla rete personale, prima del primo post | P | Da fare |
-| 4 | Prompt e testi delle prime 4 settimane di Instagram (dopo il punto 1), passati da humanizer | C | Da fare |
-| 5 | Attivare la notifica email di Netlify Forms per il modulo `signup` | P | Da fare |
-| 6 | Sfoltire i doppioni della Mappa dei fatti, prossimo il CLAUDE.md dell'app (ROADMAP 3, 3a, 3b fatte) | C | In corso |
+| 4 | Reddit: account con un po' di storia (circa 50 di karma, commentando davvero), poi un post in inglese su r/SideProject e r/betatests (storia, screenshot, link, richiesta di riscontri; testo scritto con Claude, passato da humanizer); leggere prima le regole di ogni subreddit | P | Da fare |
+| 5 | Prima di BetaList: controllare il percorso inglese del sito fino alla mail di benvenuto e il limite giornaliero di mail di Resend (un lancio può portare centinaia di iscritti in un giorno) | C | Da fare |
+| 6 | Iscrivere Unclock su BetaList (coda gratuita di 2-3 mesi; saltarla costa circa 99-129 $, decide Pasquale); il giorno del lancio chiedere ai tester e su Telegram di commentare la scheda | P | Da fare |
+| 7 | Prompt e testi delle prime 4 settimane di Instagram (dopo il punto 1), passati da humanizer | C | Da fare |
+| 8 | Attivare la notifica email di Netlify Forms per il modulo `signup` | P | Da fare |
+| 9 | Sfoltire i doppioni della Mappa dei fatti, prossimo il CLAUDE.md dell'app (ROADMAP 3, 3a, 3b fatte) | C | In corso |
 | — | Obiettivo di fondo: far provare l'app a più persone possibile prima del Play Store (tappe 12, 100, oltre) | P, C | In corso |
 | — | Ricorrente: a ogni cambio visibile dell'app, rifare screenshot e immagini del sito | C | Sempre |
 | — | Dopo: controllare il limite mensile di Netlify Forms se le iscrizioni superano le 100 al mese | P | Dopo |
