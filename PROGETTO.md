@@ -54,7 +54,7 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 | Task | Area | Stato |
 |---|---|---|
 | Far provare l'app fino a 1.000 tester (tappe: 12, 100, 1.000) | Social, sito | In corso |
-| Reggere 1.000 iscrizioni: limiti di Netlify Forms, Resend e il tetto di 50 mail al giorno | Sito | Da fare (Claude) |
+| Controllare il limite mensile di Netlify Forms se le iscrizioni superano le 100 al mese (il tetto di 50 mail al giorno basta) | Sito | Dopo (Pasquale) |
 | Confermare l'approvazione del test chiuso su Play Console | Play | In attesa di Pasquale |
 | Aprire (o rinominare) il profilo `@pasquale.builds` e seguire `marketing/PIANO_INSTAGRAM.md` | Social | Da fare (Pasquale) |
 | Prova completa da un altro account Google (pagina tester, gruppo, opt-in, installazione) | Sito, Play | Fatto (2026-10-26) |
