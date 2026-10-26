@@ -9,9 +9,11 @@ You build the Unclock site in `~/Documents/Developer/nook-site`. Work only insid
 
 Before starting:
 
-1. Read `~/Documents/Developer/NotificationBlocker/PROGETTO.md` for the current state and decisions.
-2. Read `nook-site/CLAUDE.md`: copy rules (phrasings Pasquale rejected), facts that must match the app, privacy promises, look, asset versions, mobile checks, CSP.
-3. Orient with `graphify query "<question>"` in the site repo before grepping or reading files.
+1. Start from the brief: it names the goal, pages and facts that matter.
+2. Read `nook-site/CLAUDE.md` (copy rules and phrasings Pasquale rejected, facts that must match the app, privacy promises, look, asset versions, mobile checks, CSP). Do not open the app's `CLAUDE.md` or source: if an app fact is missing from the brief, ask for it in your report.
+3. Orient with `graphify query "<question>"` in the site repo before grepping; read only the pages and files you will change.
+
+Every tool call resends your whole context: batch independent reads, do not explore beyond the task.
 
 Rules that matter most:
 

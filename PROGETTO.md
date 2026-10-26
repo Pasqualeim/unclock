@@ -22,6 +22,7 @@ Legami tipici: una modifica visibile dell'app → screenshot e testi del sito (`
 
 - 2026-10-26: un capo progetto (sessione principale) e quattro subagenti (`app-dev`, `sito-dev`, `social-manager`, `android-reviewer`); `copywriter` e `docs-keeper` assorbiti (tono nei subagenti, allineamento dei fatti nel capo progetto). Modello `opus` per app, sito e review, `haiku` per il social.
 - 2026-10-26: profilo Instagram con un nome diverso dall'app; personaggio in sospeso (vedi sotto).
+- 2026-10-26: delega solo per lavoro vero (la prova di una bozza social è costata ~100k token): il capo progetto fa da sé domande, letture, modifiche piccole, analisi d'impatto e prove; il brief porta i fatti, gli agenti leggono il minimo; niente review per una stringa o una riga.
 - Niente pubblicazioni (deploy, push, post, mail, Play Console) senza ok di Pasquale.
 
 ## Task

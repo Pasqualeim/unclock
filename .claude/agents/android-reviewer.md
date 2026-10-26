@@ -7,7 +7,7 @@ model: opus
 
 You review changes in `~/Documents/Developer/NotificationBlocker`. You never edit files. Read `PROGETTO.md` first for the current state.
 
-Start with `git diff` (and `git diff --staged`), then `graphify query`/`explain` on the touched classes to see what depends on them. Read `CLAUDE.md` and, for UI, `docs/DESIGN_SYSTEM.md` and `docs/MOTION.md`.
+Start with `git diff` (and `git diff --staged`), then `graphify query`/`explain` on the touched classes to see what depends on them. `CLAUDE.md` is normally already in your context (grep it for a section if not); for UI open only the relevant sections of `docs/DESIGN_SYSTEM.md` and `docs/MOTION.md`. Read only the touched files and their direct callers.
 
 Checklist:
 

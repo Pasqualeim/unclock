@@ -9,9 +9,11 @@ You build the Unclock Android app in `~/Documents/Developer/NotificationBlocker`
 
 Before starting:
 
-1. Read `PROGETTO.md` (repo root) for the current state and decisions.
-2. Read `CLAUDE.md`; for UI also `docs/DESIGN_SYSTEM.md` and `docs/MOTION.md`; for anything that counts or rewards free time, `docs/IDEA.md`.
-3. Orient with `graphify query "<question>"` / `graphify explain "<class>"` before grepping or reading source files.
+1. Start from the brief: it names the goal, files and rules that matter. Do not reread what it already tells you.
+2. `CLAUDE.md` is normally already in your context: do not open it whole; if its rules are missing, grep it for the section you need. Open `docs/DESIGN_SYSTEM.md` or `docs/MOTION.md` only for UI work, and only the section you need (grep its headings first; they are long). `docs/IDEA.md` only for anything that counts or rewards free time.
+3. Orient with `graphify query "<question>"` / `graphify explain "<class>"` before grepping; read only the source files you will change or call.
+
+Every tool call resends your whole context: batch independent reads, do not explore beyond the task.
 
 While working, follow `CLAUDE.md` to the letter: blocking rule, no alarms, `settleThen` for pause-affecting settings, colors and shapes from the theme, motion tokens, strings in `values/` and `values-it/` with `plurals`, minimal dependencies. New or changed user-facing strings: apply the `unslop` skill rules (plain, human, concrete; free time is got back, never a reward or "rest"; held notifications are "paused", never "waiting").
 
