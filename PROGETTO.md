@@ -36,6 +36,7 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 | Play Console, test chiuso, passi manuali | `docs/PUBLISHING.md` | ROADMAP (stato) |
 | Testi e grafica dello store | `docs/store/LISTING.md` | ROADMAP (stato) |
 | Instagram: strategia, calendario, novità | `marketing/STRATEGY.md`, `CALENDAR.md`, `DEV_LOG.md` | `docs/social/INSTAGRAM.md` (storico), PROGETTO.md |
+| Versione dell'app (versionName, versionCode) | `app/build.gradle.kts` | `docs/store/LISTING.md` (aggiornata a ogni rilascio), ROADMAP, `PUBLISHING.md` |
 | Capo progetto e subagenti | `CLAUDE.md` app ("Project lead", "Agents") | PROGETTO.md (decisioni) |
 
 ## Decisioni
@@ -54,7 +55,7 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 | Confermare l'approvazione del test chiuso su Play Console | Play | In attesa di Pasquale |
 | Scegliere nome e personaggio del profilo Instagram | Social | In attesa di Pasquale |
 | Prova completa da un altro account Google (pagina tester, gruppo, opt-in, installazione) | Sito, Play | Fatto (2026-10-26) |
-| Sfoltire i doppioni indicati dalla Mappa dei fatti (prima la riga 3 della ROADMAP) | Tutte | Da fare, a pezzi |
+| Sfoltire i doppioni indicati dalla Mappa dei fatti | Tutte | In corso: ROADMAP righe 3, 3a, 3b fatte (26/10/2026); il resto a pezzi |
 | Struttura capo progetto + subagenti, auditor, mappa dei fatti | Tutte | Fatto (2026-10-26) |
 
 ## Idee in sospeso

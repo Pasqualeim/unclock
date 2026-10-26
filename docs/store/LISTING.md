@@ -9,7 +9,7 @@ Tieni questo file allineato all'app: una nuova funzione, un nuovo permesso o un 
 | Campo | Valore |
 |---|---|
 | Nome del pacchetto (`applicationId`) | `com.pasquale.freetime` (dal 20/10/2026, nuova app; senza il nome del marchio apposta; definitivo dopo il primo caricamento. La prima app `com.pasquale.nook` è stata abbandonata) |
-| Versione | `versionName` 1.0, `versionCode` 2 (in `app/build.gradle.kts`) |
+| Versione | `versionName` 1.0.1, `versionCode` 4 (in `app/build.gradle.kts`, che è il padrone: aggiorna qui a ogni rilascio) |
 | Android minimo | 9 (API 28). `targetSdk` 37 (Play chiede almeno 36 dal 31/08/2026) |
 | File da caricare | `app/build/outputs/bundle/release/app-release.aab` (`./gradlew bundleRelease`) |
 | Categoria | Produttività |

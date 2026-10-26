@@ -12,7 +12,7 @@ Profilo per trovare tester durante la fase di test (ROADMAP, sezione 0). Il tono
 
   (147 caratteri)
 
-- **Link:** https://unclock.netlify.app/it/prova
+- **Link:** https://getunclock.app/it/prova
 - **Immagine del profilo:** l'icona del lucchetto (`docs/store/icon-512.png`).
 
 ## Primi sei post

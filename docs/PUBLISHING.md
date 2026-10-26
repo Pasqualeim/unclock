@@ -410,11 +410,11 @@ Copiala in un file nuovo e spunta man mano.
 |---|---|---|
 | Codice, build firmata, test tecnici | Claude | Fatto |
 | Testi, icona, feature graphic, screenshot, risposte ai moduli | Claude | Fatto (`store/LISTING.md`) |
-| Informativa privacy online | Pasquale (Pages) + Claude (testo) | Fatto |
+| Informativa privacy online | Pasquale (Netlify, https://getunclock.app/privacy) + Claude (testo) | Fatto |
 | Backup di keystore e password | Pasquale | **Da fare** |
 | Verifica del marchio "Unclock" | Pasquale | Ricerca fatta (19/10/2026, TMview); resta il parere di un consulente sui marchi "UNLOCK" |
 | Account Play Console, verifica identità | Pasquale | Fatto (22/10/2026) |
-| Tester, Google Gruppo, inviti | Pasquale | Gruppo `unclock-tester` impostato come tester del test chiuso e le 8 persone di "Tester Nook" dentro (22/10/2026); resta la prova da un altro account, poi gli inviti |
+| Tester, Google Gruppo, inviti | Pasquale | Gruppo `unclock-tester` impostato come tester del test chiuso e le 8 persone di "Tester Nook" dentro (22/10/2026); prova da un altro account riuscita il 26/10/2026, ora gli inviti fino a 12 tester |
 | Caricare AAB e compilare Play Console | Pasquale, con i testi pronti | Fatto (22/10/2026): AAB versionCode 3, test interno e chiuso creati, moduli compilati; test chiuso inviato in revisione, approvazione da confermare |
 | Aggiornamenti dopo i feedback | Claude | Quando arrivano |
 | Tag `v1.0.0` | Claude | Alla pubblicazione |
