@@ -17,6 +17,7 @@ Purpose: we have a life beyond work. "Off-hours" means any time you are not work
 
 Related docs (read before UI work):
 
+- `PROGETTO.md`: the project lead's short view across app, site and Instagram (decisions, cross-area tasks, parked ideas); read at every session start, see "Project lead"
 - `docs/DESIGN_SYSTEM.md`: colors, type, shapes, components, copy tone
 - `docs/MOTION.md`: animation tokens and rules
 - `docs/ROADMAP.md`: project status (publishing, open items, done); update it when you ship or drop an item
@@ -204,21 +205,33 @@ The owner follows progress on the Trello board "Unclock" (https://trello.com/b/B
 
 - **Read** it when picking what to do next or when the owner asks about progress: the owner may have moved or added cards there (a card in "🔨 In corso" is what they are working on; a new card is a request to weigh against the priorities above).
 - **Update** it in the same session whenever a ROADMAP item is done, added, reordered or dropped: move the card, or add a dated card on top of "✅ Fatto (diario, dal più recente)" (title `YYYY-MM-DD · what changed`, a few bullets, marked done). Lists: "🔨 In corso", "🎯 Fase di test (priorità)" (ROADMAP section 0, in order), "💡 Dopo" (sections 2-4), "🚀 Pubblicazione Play" (section 5), "✅ Fatto". Titles start with `[Claude]` or `[Pasquale]` for who does it.
-- Subagents have no Trello tools: the main session does it, after `docs-keeper` has updated the ROADMAP.
+- Subagents have no Trello tools: the main session does it, right after updating the ROADMAP.
 
 ### Antigravity for side work
 
 To save Claude's tokens, suggest doing **side tasks that do not touch the code** in Antigravity: image generation (Gemini), moodboards, store graphic drafts, web research. When suggesting it, give a ready-to-paste prompt for Antigravity with the constraints from the docs (palette, `docs/IDEA.md` rules, sizes). Claude keeps everything that ends up in the repo as code or project docs: Kotlin, scripts in `tools/`, importing and converting assets, tests, docs, commits.
 
+## Project lead (capo progetto)
+
+The main session is the project lead for three linked areas: app (this repo), site (`~/Documents/Developer/nook-site`), Instagram (`marketing/`). `PROGETTO.md` (repo root) holds vision, folders, decisions, the cross-area task table and parked ideas; `docs/ROADMAP.md` stays the detailed source of truth.
+
+- **Session start:** read `PROGETTO.md` and give Pasquale a short status (in progress, waiting on him, next up), in Italian.
+- **Delegate** real work to the subagents below with a clear prompt: goal, files, constraints, what done looks like. Delegate only real work (each subagent starts cold and rereads its docs): quick edits, questions and reads stay in the main session.
+- **After every change**, judge its impact on the other two areas (visible app change → site screenshots/text, `marketing/DEV_LOG.md`, a social draft; permission or data flow → site privacy, `docs/store/LISTING.md`; site fact → app strings) and propose the follow-up tasks to Pasquale before doing them.
+- **Keep facts aligned** (formerly `docs-keeper`): ROADMAP, `docs/store/LISTING.md` (Data safety), both CLAUDE.md files, site privacy and FAQ say the same true thing; the code wins.
+- **Session end:** update `PROGETTO.md` (task table, decisions, parked ideas), the ROADMAP and Trello when something changed.
+- **No publishing without Pasquale's ok:** no deploy, push of the site, Instagram post, email, Telegram message or Play Console action unless he says yes in this conversation.
+
 ## Agents
 
-Three subagents in `.claude/agents/`. Use them without being asked:
+Four subagents in `.claude/agents/`. Use them without being asked, for real work only:
 
+- `app-dev`: bigger self-contained changes to the Android app (Kotlin, resources, tests). Small edits the main session does itself.
 - `android-reviewer`: after every change to app code, before committing. Read-only.
-- `docs-keeper`: when a feature, permission or data flow is added, changed or removed, and after a release. Keeps `docs/ROADMAP.md`, `docs/store/LISTING.md`, both CLAUDE.md files and the facts on the site (`~/Documents/Developer/nook-site`) in line with the code.
-- `copywriter`: for new or changed user-facing text (app, site, store), IT and EN.
+- `sito-dev`: changes to the site in `~/Documents/Developer/nook-site` (pages, CSS, function, assets). Never deploys.
+- `social-manager`: Instagram drafts (posts, carousels, captions, reel scripts) in `marketing/bozze/`. No shell, never publishes.
 
-Everything else the main session does itself.
+Text tone (formerly `copywriter`) lives in each subagent: `unslop` for app strings, `humanizer` for site and social. Each subagent reads `PROGETTO.md` first and ends its report with the impact on the other areas. Everything else the main session does itself.
 
 ## graphify
 
