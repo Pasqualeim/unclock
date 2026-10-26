@@ -35,3 +35,8 @@ local.properties
 
 # graphify output (generated, rebuild with `graphify update .`)
 /graphify-out/
+
+# Owner-only: Instagram work, local preview config
+/marketing/
+/.claude/launch.json
+/.idea/vcs.xml
