@@ -6,7 +6,7 @@ Legenda costo: **S** < 1h · **M** mezza giornata · **L** più giorni.
 
 ## 0. Fase di test (prima del Play Store)
 
-Prima di andare su Google Play, il prodotto si valida con un test indipendente. Ordine deciso dal proprietario il 15/10/2026.
+Prima di andare su Google Play, il prodotto si valida con un test indipendente, il più largo possibile: fino a 1.000 tester (deciso il 26/10/2026). I 12 tester per 14 giorni di Google sono solo il minimo per pubblicare. Prima il profilo Instagram, poi il calendario dei contenuti (`marketing/PIANO_INSTAGRAM.md`). Ordine deciso dal proprietario il 15/10/2026.
 
 | # | Voce | Chi | Note |
 |---|---|---|---|

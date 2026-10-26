@@ -6,7 +6,7 @@ Quadro breve per il capo progetto e i subagenti. Il dettaglio resta in `docs/ROA
 
 Unclock zittisce le notifiche delle app di lavoro quando non lavori e conta il tempo che ti riprendi. La domanda: perché le app premiano solo il tempo di lavoro e concentrazione, e niente esiste per il tempo libero? Regole e checklist anti-stress: `docs/IDEA.md`.
 
-Fase attuale: **test indipendente** (test chiuso su Play, 12 tester per 14 giorni). Il Play Store pubblico viene dopo.
+Fase attuale: **test indipendente**: far provare l'app a più persone possibile, fino a 1.000, prima del Play Store pubblico. I 12 tester per 14 giorni chiesti da Google sono solo il minimo per poter pubblicare.
 
 ## Aree e cartelle
 
@@ -53,7 +53,8 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 
 | Task | Area | Stato |
 |---|---|---|
-| Trovare 12 tester e far partire i 14 giorni del test chiuso | Social, sito | Da fare |
+| Far provare l'app fino a 1.000 tester (tappe: 12, 100, 1.000) | Social, sito | In corso |
+| Reggere 1.000 iscrizioni: limiti di Netlify Forms, Resend e il tetto di 50 mail al giorno | Sito | Da fare (Claude) |
 | Confermare l'approvazione del test chiuso su Play Console | Play | In attesa di Pasquale |
 | Aprire (o rinominare) il profilo `@pasquale.builds` e seguire `marketing/PIANO_INSTAGRAM.md` | Social | Da fare (Pasquale) |
 | Prova completa da un altro account Google (pagina tester, gruppo, opt-in, installazione) | Sito, Play | Fatto (2026-10-26) |
