@@ -54,7 +54,7 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 |---|---|---|
 | Trovare 12 tester e far partire i 14 giorni del test chiuso | Social, sito | Da fare |
 | Confermare l'approvazione del test chiuso su Play Console | Play | In attesa di Pasquale |
-| Scegliere nome e personaggio del profilo Instagram | Social | In attesa di Pasquale |
+| Aprire (o rinominare) il profilo `@pasquale.builds` e seguire `marketing/PIANO_INSTAGRAM.md` | Social | Da fare (Pasquale) |
 | Prova completa da un altro account Google (pagina tester, gruppo, opt-in, installazione) | Sito, Play | Fatto (2026-10-26) |
 | Sfoltire i doppioni indicati dalla Mappa dei fatti | Tutte | In corso: ROADMAP righe 3, 3a, 3b fatte (26/10/2026); il resto a pezzi |
 | Struttura capo progetto + subagenti, auditor, mappa dei fatti | Tutte | Fatto (2026-10-26) |

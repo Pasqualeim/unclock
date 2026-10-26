@@ -4,8 +4,7 @@ Profilo per trovare tester durante la fase di test (ROADMAP, sezione 0). Il tono
 
 ## Profilo
 
-- **Nome utente:** `@unclock_it` (come il canale Telegram).
-- **Nome:** Unclock · Pasquale
+- **Nome utente:** `@pasquale.builds`, nome visualizzato `Pasquale` (deciso il 26/10/2026: il profilo è dello sviluppatore, non dell'app). Piano completo: `marketing/PIANO_INSTAGRAM.md`.
 - **Bio** (massimo 150 caratteri):
 
   > Sto costruendo Unclock, un'app Android che mette in pausa le notifiche di lavoro e conta il tempo libero. Cerco chi la provi e mi dica cosa non va.
