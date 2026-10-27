@@ -14,7 +14,7 @@ Fase attuale: **test indipendente**: far provare l'app a più persone possibile,
 |---|---|---|---|
 | App | `~/Documents/Developer/NotificationBlocker` (`app/`, `docs/`, `tools/`) | `app-dev`, poi `android-reviewer` | Kotlin + Compose; regole in `CLAUDE.md` |
 | Sito | `~/Documents/Developer/nook-site` | `sito-dev` | HTML statico su Netlify, https://getunclock.app; regole nel suo `CLAUDE.md` |
-| Social | `NotificationBlocker/marketing/` (bozze in `marketing/bozze/`) | `social-manager` | Instagram, X, Reddit, feddit.it, XDA; pubblica solo Pasquale |
+| Social | `NotificationBlocker/marketing/` (bozze in `marketing/bozze/`) | capo progetto | Instagram, X, Reddit, feddit.it, XDA; pubblica solo Pasquale |
 
 Legami tipici: una modifica visibile dell'app → screenshot e testi del sito (`tools/store/capture_screenshots.sh`), riga in `marketing/DEV_LOG.md`, bozza social. Un permesso o un flusso di dati nuovo → privacy del sito e `docs/store/LISTING.md`.
 
@@ -49,6 +49,7 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 - 2026-10-26: contro i documenti incoerenti: hook git di graphify in entrambi i repo (grafo aggiornato a ogni commit e checkout, zero token), `docs-auditor` in sola lettura lanciato dopo un rilascio, un cambio di permessi o dati, o su richiesta (mai ogni N modifiche), e la "Mappa dei fatti" qui sopra. Sfoltire i doppioni si fa dopo, a pezzi.
 - 2026-10-26: niente Trello (leggerlo e scriverlo costava troppi token). La lista dei punti è la sezione Task qui sotto, aggiornata dopo ogni commit in tutti e due i repo (hook `.claude/hooks/progetto-after-commit.py`); a inizio sessione il capo progetto la mette nel piano di Claude Code. Niente di fatto o deciso resta solo nella chat.
 - 2026-10-26: Instagram in pausa; i canali per trovare tester sconosciuti sono BetaList e Reddit (punti 1-3 dei Task). Gli scambi tra sviluppatori (r/AndroidClosedTesting) danno al massimo i 12 di Google, non utenti veri; niente servizi a pagamento di tester e niente premi.
+- 2026-10-27: tolto `social-manager`: per i testi brevi chiamarlo costava più che scriverli nella sessione principale, e video e grafiche non poteva farli. Testi social e grafica li fa il capo progetto (testi da humanizer, grafica su Opus).
 - Niente pubblicazioni (deploy, push, post, mail, Play Console) senza ok di Pasquale.
 
 ## Task
