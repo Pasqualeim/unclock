@@ -39,6 +39,7 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 | Anteprima dei link (og-it/og-en: nome, icona, titolo) | `nook-site/tools/og_image.py` (rigenera le PNG) | `nook-site/CLAUDE.md` |
 | Versione dell'app (versionName, versionCode) | `app/build.gradle.kts` | `docs/store/LISTING.md` (aggiornata a ogni rilascio), ROADMAP, `PUBLISHING.md` |
 | Video promo e immagini dei post (testi, scene, ritmo) | `tools/store/promo_video.py` (rigenera `marketing/video/` e `marketing/images/post_*`) | bozze in `marketing/bozze/` |
+| X: piano settimanale, post, regole per crescere | `.claude/agents/social-manager.md` (regole), `marketing/bozze/x/` (piani) | PROGETTO.md (task 0a) |
 | Capo progetto e subagenti | `CLAUDE.md` app ("Project lead", "Agents") | PROGETTO.md (decisioni) |
 
 ## Decisioni
