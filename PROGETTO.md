@@ -58,6 +58,7 @@ In ordine di priorità. Chi: [P] Pasquale, [C] Claude.
 
 | # | Task | Chi | Stato |
 |---|---|---|---|
+| 0 | feddit.it: account, post italiano su Le Alternative (dal 28/10), poi Informatica con tono "come l'ho fatta"; poi XDA (Android Apps & Games, testo inglese); un giorno tra un post e l'altro, titolo e prima riga diversi. Testi in `marketing/bozze/2026-10-27_post-tester.md` | P | Da fare |
 | 1 | Reddit: account con un po' di storia (circa 50 di karma, commentando davvero), poi un post in inglese su r/SideProject e r/betatests (storia, screenshot, link, richiesta di riscontri; testo scritto con Claude, passato da humanizer); leggere prima le regole di ogni subreddit | P | Da fare |
 | 2 | Prima di BetaList: controllare il percorso inglese del sito fino alla mail di benvenuto e il limite giornaliero di mail di Resend (un lancio può portare centinaia di iscritti in un giorno) | C | Da fare |
 | 3 | Iscrivere Unclock su BetaList (coda gratuita di 2-3 mesi; saltarla costa circa 99-129 $, decide Pasquale); il giorno del lancio chiedere ai tester e su Telegram di commentare la scheda | P | Da fare |
@@ -68,7 +69,7 @@ In ordine di priorità. Chi: [P] Pasquale, [C] Claude.
 | — | Ricorrente: a ogni cambio visibile dell'app, rifare screenshot e immagini del sito | C | Sempre |
 | — | Dopo: controllare il limite mensile di Netlify Forms se le iscrizioni superano le 100 al mese | P | Dopo |
 
-Fatto di recente: video promo in motion design IT/EN con musica originale e 6 immagini per i post (27/10, `tools/store/promo_video.py`, `promo_music.py`), testo dei post per Reddit, feddit e X (27/10, `marketing/bozze/`), prova da un altro account Google (26/10), struttura capo progetto con subagenti, auditor e mappa dei fatti (26/10), informativa e anteprime del sito corrette (26/10). Lo storico completo è nella ROADMAP e in `git log`.
+Fatto di recente: primo post su X con video e link nella risposta, fissato sul profilo, e profilo X rifatto (27/10, https://x.com/Pasquale_im/status/2115124704147357929), video promo in motion design IT/EN con musica originale e 6 immagini per i post (27/10, `tools/store/promo_video.py`, `promo_music.py`), testo dei post per Reddit, feddit e X (27/10, `marketing/bozze/`), prova da un altro account Google (26/10), struttura capo progetto con subagenti, auditor e mappa dei fatti (26/10), informativa e anteprime del sito corrette (26/10). Lo storico completo è nella ROADMAP e in `git log`.
 
 ## Idee in sospeso
 
