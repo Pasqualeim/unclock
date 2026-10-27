@@ -67,7 +67,7 @@ In ordine di priorità. Chi: [P] Pasquale, [C] Claude.
 | — | Ricorrente: a ogni cambio visibile dell'app, rifare screenshot e immagini del sito | C | Sempre |
 | — | Dopo: controllare il limite mensile di Netlify Forms se le iscrizioni superano le 100 al mese | P | Dopo |
 
-Fatto di recente: video promo in motion design IT/EN e 6 immagini per i post (27/10, `tools/store/promo_video.py`), testo dei post per Reddit, feddit e X (27/10, `marketing/bozze/`), prova da un altro account Google (26/10), struttura capo progetto con subagenti, auditor e mappa dei fatti (26/10), informativa e anteprime del sito corrette (26/10). Lo storico completo è nella ROADMAP e in `git log`.
+Fatto di recente: video promo in motion design IT/EN con musica originale e 6 immagini per i post (27/10, `tools/store/promo_video.py`, `promo_music.py`), testo dei post per Reddit, feddit e X (27/10, `marketing/bozze/`), prova da un altro account Google (26/10), struttura capo progetto con subagenti, auditor e mappa dei fatti (26/10), informativa e anteprime del sito corrette (26/10). Lo storico completo è nella ROADMAP e in `git log`.
 
 ## Idee in sospeso
 

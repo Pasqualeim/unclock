@@ -1,22 +1,26 @@
 """Draws Unclock's motion-design promo video and the stills for social posts (1920x1080).
 
-    python3 -m venv /tmp/promo && /tmp/promo/bin/pip install pillow imageio-ffmpeg
+    python3 -m venv /tmp/promo && /tmp/promo/bin/pip install pillow imageio-ffmpeg numpy
     /tmp/promo/bin/python tools/store/promo_video.py           # it and en, video and stills
     /tmp/promo/bin/python tools/store/promo_video.py it --stills
 
-Writes marketing/video/unclock_promo_<lang>.mp4 (H.264, 30 fps, no audio) and
+Writes marketing/video/unclock_promo_<lang>.mp4 (H.264, 30 fps, music from promo_music.py) and
 marketing/images/post_<lang>_<n>_<scene>.png (the last frame of each scene).
 Pictures come from the site (app screenshots, lake scenes) and docs/store/icon-512.png;
 type as in the store screenshots: Fraunces 600 for titles (tools/store/fonts), the site's
-Inter for the rest. Pace: one idea per scene, 5-7 s each, entrances of about a second,
+Inter for the rest. Pace: one idea per scene, 4.5-7 s each, entrances of about a second,
 0.7 s cross-fades: calm on purpose. The copy follows docs/IDEA.md and was checked with humanizer.
 """
 
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
+
+sys.path.insert(0, str(Path(__file__).parent))
+import promo_music  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 SITE = ROOT.parent / "nook-site/public/assets"
@@ -68,7 +72,8 @@ COPY = {
 }
 
 # (scene, seconds). Scenes overlap by XFADE.
-SCENES = [("intro", 6.0), ("work", 6.0), ("pause", 7.5), ("stats", 6.0), ("privacy", 5.5), ("end", 6.5)]
+# Scenes with little to read are a touch shorter.
+SCENES = [("intro", 5.6), ("work", 5.2), ("pause", 7.0), ("stats", 5.6), ("privacy", 4.6), ("end", 6.0)]
 
 
 # ---- drawing helpers -------------------------------------------------------
@@ -302,11 +307,11 @@ class Promo:
 
         elif name == "privacy":
             lock, (a, b, c) = self.lock, self.privacy
-            p = enter(t, 0.3, 1.2)
+            p = enter(t, 0.2, 1.1)
             put(f, lock, (W - lock.width) / 2, 150, p, 0.86 + 0.14 * p)
-            rise(f, a, (W - a.width) / 2, 470, t, 1.0)
-            rise(f, b, (W - b.width) / 2, 620, t, 1.8)
-            rise(f, c, (W - c.width) / 2, 690, t, 2.4)
+            rise(f, a, (W - a.width) / 2, 470, t, 0.7)
+            rise(f, b, (W - b.width) / 2, 620, t, 1.3)
+            rise(f, c, (W - c.width) / 2, 690, t, 1.8)
 
         elif name == "end":
             f.alpha_composite(self.night)
@@ -359,9 +364,11 @@ def render(lang: str, stills_only: bool) -> None:
         return
     OUT_VIDEO.mkdir(parents=True, exist_ok=True)
     out = OUT_VIDEO / f"unclock_promo_{lang}.mp4"
+    wav = Path(tempfile.gettempdir()) / f"unclock_promo_{lang}.wav"
+    promo_music.save(str(wav), promo.length())
     cmd = [ffmpeg(), "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
-           "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-preset", "slow", "-crf", "18",
-           "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(out)]
+           "-r", str(FPS), "-i", "-", "-i", str(wav), "-c:v", "libx264", "-preset", "slow", "-crf", "18",
+           "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(out)]
     enc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     frames = round(promo.length() * FPS)
     for n in range(frames):
