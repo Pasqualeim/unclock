@@ -14,7 +14,7 @@ Fase attuale: **test indipendente**: far provare l'app a più persone possibile,
 |---|---|---|---|
 | App | `~/Documents/Developer/NotificationBlocker` (`app/`, `docs/`, `tools/`) | `app-dev`, poi `android-reviewer` | Kotlin + Compose; regole in `CLAUDE.md` |
 | Sito | `~/Documents/Developer/nook-site` | `sito-dev` | HTML statico su Netlify, https://getunclock.app; regole nel suo `CLAUDE.md` |
-| Social | `NotificationBlocker/marketing/` (bozze in `marketing/bozze/`) | `social-manager` | Instagram; pubblica solo Pasquale |
+| Social | `NotificationBlocker/marketing/` (bozze in `marketing/bozze/`) | `social-manager` | Instagram, X, Reddit, feddit.it, XDA; pubblica solo Pasquale |
 
 Legami tipici: una modifica visibile dell'app → screenshot e testi del sito (`tools/store/capture_screenshots.sh`), riga in `marketing/DEV_LOG.md`, bozza social. Un permesso o un flusso di dati nuovo → privacy del sito e `docs/store/LISTING.md`.
 
@@ -38,6 +38,7 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 | Instagram: strategia, calendario, novità | `marketing/STRATEGY.md`, `CALENDAR.md`, `DEV_LOG.md` | `docs/social/INSTAGRAM.md` (storico), PROGETTO.md |
 | Anteprima dei link (og-it/og-en: nome, icona, titolo) | `nook-site/tools/og_image.py` (rigenera le PNG) | `nook-site/CLAUDE.md` |
 | Versione dell'app (versionName, versionCode) | `app/build.gradle.kts` | `docs/store/LISTING.md` (aggiornata a ogni rilascio), ROADMAP, `PUBLISHING.md` |
+| Video promo e immagini dei post (testi, scene, ritmo) | `tools/store/promo_video.py` (rigenera `marketing/video/` e `marketing/images/post_*`) | bozze in `marketing/bozze/` |
 | Capo progetto e subagenti | `CLAUDE.md` app ("Project lead", "Agents") | PROGETTO.md (decisioni) |
 
 ## Decisioni
@@ -66,7 +67,7 @@ In ordine di priorità. Chi: [P] Pasquale, [C] Claude.
 | — | Ricorrente: a ogni cambio visibile dell'app, rifare screenshot e immagini del sito | C | Sempre |
 | — | Dopo: controllare il limite mensile di Netlify Forms se le iscrizioni superano le 100 al mese | P | Dopo |
 
-Fatto di recente: prova da un altro account Google (26/10), struttura capo progetto con subagenti, auditor e mappa dei fatti (26/10), informativa e anteprime del sito corrette (26/10). Lo storico completo è nella ROADMAP e in `git log`.
+Fatto di recente: video promo in motion design IT/EN e 6 immagini per i post (27/10, `tools/store/promo_video.py`), testo dei post per Reddit, feddit e X (27/10, `marketing/bozze/`), prova da un altro account Google (26/10), struttura capo progetto con subagenti, auditor e mappa dei fatti (26/10), informativa e anteprime del sito corrette (26/10). Lo storico completo è nella ROADMAP e in `git log`.
 
 ## Idee in sospeso
 

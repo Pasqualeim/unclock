@@ -222,7 +222,7 @@ The main session is the project lead for three linked areas: app (this repo), si
 - **After every change**, judge its impact on the other two areas (visible app change → site screenshots/text, `marketing/DEV_LOG.md`, a social draft; permission or data flow → site privacy, `docs/store/LISTING.md`; site fact → app strings) and propose the follow-up tasks to Pasquale before doing them.
 - **Keep facts aligned** (formerly `docs-keeper`): each topic has one owner file, listed in "Mappa dei fatti" in `PROGETTO.md`. Write a fact in full only in its owner and link to it elsewhere; when two files disagree, the code wins, then the owner. A new topic that lands in several files gets a row in the map.
 - **Session end:** update `PROGETTO.md` (task table, decisions, parked ideas) and the ROADMAP when something changed.
-- **No publishing without Pasquale's ok:** no deploy, push of the site, Instagram post, email, Telegram message or Play Console action unless he says yes in this conversation.
+- **No publishing without Pasquale's ok:** no deploy, push of the site, social post (Instagram, X, Reddit, feddit), email, Telegram message or Play Console action unless he says yes in this conversation.
 
 ## Agents
 
@@ -231,7 +231,7 @@ Five subagents in `.claude/agents/`. Use them without being asked, for real work
 - `app-dev`: bigger self-contained changes to the Android app (Kotlin, resources, tests). Small edits the main session does itself.
 - `android-reviewer`: after every change to app code, before committing; skip it for a single string or a one-line fix. Read-only.
 - `sito-dev`: changes to the site in `~/Documents/Developer/nook-site` (pages, CSS, function, assets). Never deploys.
-- `social-manager`: Instagram drafts (posts, carousels, captions, reel scripts) in `marketing/bozze/`. No shell, never publishes.
+- `social-manager`: social drafts for Instagram, X, Reddit, feddit.it and forums like XDA (posts, threads, carousels, captions, reel scripts, IT or EN) in `marketing/bozze/`. No shell, never publishes.
 - `docs-auditor`: read-only check of docs across both repos against the code and the "Mappa dei fatti" (wrong, stale, duplicated, ownerless facts); the main session makes the fixes.
 
 Text tone (formerly `copywriter`) lives in each subagent: `unslop` for app strings, `humanizer` for site and social. Each subagent reads `PROGETTO.md` first and ends its report with the impact on the other areas. Everything else the main session does itself.
