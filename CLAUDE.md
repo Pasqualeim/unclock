@@ -217,7 +217,7 @@ Whenever a user-visible feature or UI change is completed, append one bullet to 
 The main session is the project lead for three linked areas: app (this repo), site (`~/Documents/Developer/nook-site`), Instagram (`marketing/`). `PROGETTO.md` (repo root) holds vision, folders, decisions, the cross-area task table and parked ideas; `docs/ROADMAP.md` stays the detailed source of truth.
 
 - **Session start:** read `PROGETTO.md`, put its Task table in the task list, and give Pasquale a short status (in progress, waiting on him, next up), in Italian.
-- **Delegate only real work.** A subagent starts cold, and every tool call it makes resends its whole context (a short social draft cost ~100k tokens in the 2026-10-26 trial), so the default is to do the work yourself. Delegate only when one of these holds: the change spans several files with its own build/test loop (`app-dev`), it is real work in the site repo (`sito-dev`), an app diff is ready for commit (`android-reviewer`), or a docs check is due: after a release, after a permission or data-flow change, or when Pasquale asks (`docs-auditor`, never every N edits). Never delegate: questions, reads, one-file or one-string edits, impact analysis, planning, simulations or trials.
+- **Delegate only real work.** A subagent starts cold, and every tool call it makes resends its whole context (a short social draft cost ~100k tokens in the 2026-10-26 trial), so the default is to do the work yourself. Delegate only when one of these holds: the change spans several files with its own build/test loop (`app-dev`), it is real work in the site repo (`sito-dev`), Pasquale asks for X posts, media or growth advice (`social-manager`), an app diff is ready for commit (`android-reviewer`), or a docs check is due: after a release, after a permission or data-flow change, or when Pasquale asks (`docs-auditor`, never every N edits). Never delegate: questions, reads, one-file or one-string edits, impact analysis, planning, simulations or trials.
 - **Brief the subagent so it does not have to search:** put the facts it needs in the prompt (what changed, exact files and paths, the relevant rule quoted), say which docs it may skip, and ask for the short report its file defines. One subagent per task; do not run two on the same question.
 - **After every change**, judge its impact on the other two areas (visible app change → site screenshots/text, `marketing/DEV_LOG.md`, a social draft; permission or data flow → site privacy, `docs/store/LISTING.md`; site fact → app strings) and propose the follow-up tasks to Pasquale before doing them.
 - **Keep facts aligned** (formerly `docs-keeper`): each topic has one owner file, listed in "Mappa dei fatti" in `PROGETTO.md`. Write a fact in full only in its owner and link to it elsewhere; when two files disagree, the code wins, then the owner. A new topic that lands in several files gets a row in the map.
@@ -226,11 +226,12 @@ The main session is the project lead for three linked areas: app (this repo), si
 
 ## Agents
 
-Four subagents in `.claude/agents/`. Use them without being asked, for real work only:
+Five subagents in `.claude/agents/`. Use them without being asked, for real work only:
 
 - `app-dev`: bigger self-contained changes to the Android app (Kotlin, resources, tests). Small edits the main session does itself.
 - `android-reviewer`: after every change to app code, before committing; skip it for a single string or a one-line fix. Read-only.
 - `sito-dev`: changes to the site in `~/Documents/Developer/nook-site` (pages, CSS, function, assets). Never deploys.
+- `social-manager`: grows Unclock on X (Pasquale's profile): week plans, ready-to-post posts and threads, images and short videos from the app and the site, growth advice. Writes only in `marketing/` (git-ignored), never publishes. Other channels stay with the main session.
 - `docs-auditor`: read-only check of docs across both repos against the code and the "Mappa dei fatti" (wrong, stale, duplicated, ownerless facts); the main session makes the fixes.
 
 Text tone (formerly `copywriter`) lives in each subagent: `unslop` for app strings, `humanizer` for site and social. Each subagent reads `PROGETTO.md` first and ends its report with the impact on the other areas. Everything else the main session does itself.
