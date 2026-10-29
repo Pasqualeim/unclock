@@ -46,11 +46,56 @@ Al primo giro il file di prova arrivava vuoto. Era un errore nelle istruzioni pr
 
 ## Come si usa
 
-1. Metti l'immagine o il video del post nella cartella `media` del Pi, con lo stesso nome che ha nel progetto (es. `2026-10-28_niente_internet.png`).
-2. Claude crea il post su Buffer con l'indirizzo `https://media.getunclock.app/<nome del file>`.
-3. Buffer scarica il file e pubblica su X all'orario programmato.
+1. Salva l'immagine o il video del post in `marketing/images/x/` o `marketing/video/x/`, con la data davanti al nome (es. `2026-10-28_niente_internet.png`).
+2. Entro un'ora il Mac lo copia da solo sul Pi (vedi "Caricare i file").
+3. Claude crea il post su Buffer con l'indirizzo `https://media.getunclock.app/<nome del file>`.
+4. Buffer scarica il file e pubblica su X all'orario programmato.
 
-Il modo di fare il punto 1 è ancora **da decidere**: la shell che Claude usa sul Mac non riesce a raggiungere né il Pi né `media.getunclock.app` (la sua connessione passa da una lista di siti consentiti), quindi non può copiare i file da sola. Opzioni: li copi tu dal Mac (Finder o un comando pronto), oppure Hermes li scarica da un link.
+## Caricare i file
+
+Dal 29/10/2026 la copia è automatica. Ogni ora, e ogni volta che il Mac si accende, il Mac guarda le cartelle `marketing/images/x/` e `marketing/video/x/` e manda al Pi i file nuovi o cambiati (solo `.png`, `.jpg`, `.jpeg`, `.gif`, `.mp4`). Tutti i file finiscono nella stessa cartella `media`, senza sottocartelle.
+
+- **Non cancella mai niente sul Pi.** Se togli un file dal Mac, sul Pi resta: può servire a un post già programmato su Buffer. Per toglierlo dal Pi va chiesto a Hermes.
+- **Solo da casa.** SSH del Pi è raggiungibile solo dalla rete di casa (nessuna porta aperta sul router). Fuori casa la copia salta il giro senza errori e riprova l'ora dopo.
+- **Due file con lo stesso nome** in immagini e video finirebbero uno sopra l'altro: la data e il nome diverso davanti lo evitano.
+
+| Pezzo | Dove |
+|---|---|
+| Script | `tools/social/sync_media_pi.sh` (nel repo) |
+| LaunchAgent (lo fa partire) | `~/Library/LaunchAgents/app.getunclock.syncmedia.plist` |
+| Log | `~/Library/Logs/unclock-sync.log`: una riga quando copia qualcosa o quando il Pi non risponde; nessuna riga se non c'è niente di nuovo |
+| Indirizzo del Pi in casa | `192.168.1.33` (`raspberrypi4.local`), utente `pasquale` |
+| Accesso | chiave `~/.ssh/unclock_pi` (solo sul Mac), alias `unclock-pi` in `~/.ssh/config`: niente password |
+
+La chiave sul Pi è limitata: in `~/.ssh/authorized_keys` del Pi la sua riga inizia con `command="/usr/bin/rrsync -wo /home/pasquale/media",restrict`. Con quella chiave si può solo scrivere dentro `media` con rsync: niente shell, niente lettura, niente altre cartelle. Per questo lo script usa `/` come destinazione (per `rrsync` è la cartella `media`). Copia della riga com'era prima: `~/.ssh/authorized_keys.bak-unclock` sul Pi.
+
+Comandi (dal Terminale del Mac):
+
+```bash
+bash ~/Documents/Developer/NotificationBlocker/tools/social/sync_media_pi.sh
+```
+
+lancia la copia subito, senza aspettare l'ora.
+
+```bash
+launchctl bootout gui/$(id -u)/app.getunclock.syncmedia
+```
+
+la ferma (fino a quando non la riattivi);
+
+```bash
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/app.getunclock.syncmedia.plist
+```
+
+la riattiva.
+
+```bash
+tail ~/Library/Logs/unclock-sync.log
+```
+
+mostra le ultime righe del log.
+
+Se l'IP del Pi cambia (lo assegna il router), il log dirà "Pi non raggiungibile" anche a casa: aggiorna `HostName` nel blocco `unclock-pi` di `~/.ssh/config`. Per evitarlo, prenota l'indirizzo `192.168.1.33` per il Pi nelle impostazioni DHCP del router Vodafone.
 
 ## Regole
 
@@ -75,7 +120,8 @@ Puoi passare questa tabella e i "Dettagli tecnici" a Hermes o a Claude: c'è tut
 ## Stato
 
 - 29/10/2026: configurato e provato, funziona.
-- Da fare: riavviare il Pi e rifare la prova di `prova.txt` (verifica dell'accensione automatica); farsi dire da Hermes l'indirizzo del Pi nella rete di casa e se SSH è attivo solo in casa; decidere come si caricano i file.
+- 29/10/2026: copia automatica dal Mac attiva e provata (immagine e video rispondono 200, la radice 404).
+- Da fare: riavviare il Pi e rifare la prova di `prova.txt` (verifica dell'accensione automatica); prenotare l'IP del Pi sul router.
 
 ---
 
