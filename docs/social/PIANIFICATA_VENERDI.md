@@ -4,7 +4,7 @@ Deciso il 29/10/2026. Ogni venerdì Claude prepara da solo i post su X della set
 
 ## Come funziona, in breve
 
-1. **Venerdì, all'ora scelta** (mattina o pomeriggio: da decidere, vedi Stato), parte una pianificata dell'app desktop di Claude sul Mac.
+1. **Venerdì, all'ora scelta** (le 10:00), parte una pianificata dell'app desktop di Claude sul Mac.
 2. Claude legge il piano e le regole, scrive il piano della settimana dopo in `marketing/x/AAAA-MM-GG_settimana-N.md` (3-4 post, mattine dei feriali 9-11, link sempre nella prima risposta), con testi passati da humanizer.
 3. Crea immagini e video in `marketing/images/x/` e `marketing/video/x/`, con la **data di uscita** davanti al nome.
 4. La copia automatica li porta sul Raspberry Pi (`docs/social/MEDIA_HOST.md`): la pianificata la lancia subito, senza aspettare l'ora.
@@ -36,7 +36,7 @@ Da incollare in Cowork per creare la pianificata. Cambia l'orario se scegli il p
 Crea una pianificata nell'app desktop di Claude sul mio Mac, nella scheda Code (Claude Code), non in Cowork: le serve la shell vera del Mac per raggiungere il Raspberry Pi di casa.
 
 - Nome: Unclock: post X della settimana
-- Quando: ogni venerdì alle 9:00 (ora italiana)
+- Quando: ogni venerdì alle 10:00 (ora italiana)
 - Cartella di lavoro: /Users/pasqualeercolino/Documents/Developer/NotificationBlocker
 - Modello: Opus
 - Connettori: Buffer
@@ -70,6 +70,6 @@ Dopo averla creata, dimmi il nome della pianificata, quando parte la prima volta
 
 ## Stato
 
-- 29/10/2026: creata dalla sessione Code con lo strumento delle attività pianificate (non da Cowork): "Unclock: post X della settimana", venerdì alle 9:00 (parte verso le 9:10), modalità Auto. Il prompt è in `~/.claude/scheduled-tasks/unclock-post-x-settimana/SKILL.md` (uguale a quello qui sopra, con i percorsi assoluti); orario e prompt si cambiano dalla pagina Pianificate dell'app. Primo giro venerdì 30/10: controllare il resoconto e le bozze su Buffer.
+- 29/10/2026: creata dalla sessione Code con lo strumento delle attività pianificate (non da Cowork): "Unclock: post X della settimana", venerdì alle 10:00 (parte verso le 10:10; spostata dalle 9:00 il 29/10), modalità Auto. Il prompt è in `~/.claude/scheduled-tasks/unclock-post-x-settimana/SKILL.md` (uguale a quello qui sopra, con i percorsi assoluti); orario e prompt si cambiano dalla pagina Pianificate dell'app. Primo giro venerdì 30/10: controllare il resoconto e le bozze su Buffer.
 - 29/10/2026: Buffer controllato dal connettore: account pasquale.ercolino98, organizzazione "My Organization", fuso Europe/Rome, piano gratuito (3 canali, 10 post programmati alla volta). Canale X collegato lo stesso giorno: `Pasquale_im` (service `twitter`, id `6ae38e932f1f5ed64812678d`), attivo.
 - 29/10/2026: prova riuscita. Una bozza con immagine da `https://media.getunclock.app/2026-10-28_niente_internet.png` e una risposta in thread è stata accettata da Buffer (stato `draft`, immagine letta 1600x900 PNG), poi cancellata. Nella bozza Buffer tiene l'indirizzo del Pi come anteprima, non una copia sua: il Pi deve restare acceso finché i post non sono usciti (regola in `MEDIA_HOST.md`).
