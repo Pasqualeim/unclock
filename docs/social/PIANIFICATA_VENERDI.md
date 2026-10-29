@@ -17,7 +17,8 @@ In ogni giro, nell'ordine:
 2. Programma su Buffer i post pronti della settimana prossima (`customScheduled`, data e ora del calendario), con il media da `https://media.getunclock.app/<nome>` e la prima risposta col link come secondo post del thread.
 3. Scrive i post della settimana dopo in `marketing/x/AAAA-MM-GG_settimana-N.md` (3-4 post, mattine dei feriali 9-11, link sempre nella prima risposta), testi passati da humanizer.
 4. Crea immagini e video in `marketing/images/x/` e `marketing/video/x/`, con la **data di uscita** davanti al nome, e li manda sul Raspberry Pi (`docs/social/MEDIA_HOST.md`) controllando che rispondano 200.
-5. Aggiorna calendario e tabella Task di `PROGETTO.md`, scrive un resoconto breve in italiano.
+5. Manda in #unclock-x su Slack (app "Unclock avvisi", con la menzione di Pasquale) un **riepilogo** dei post appena programmati: giorno, ora, testo, prima risposta, immagine (o link al video). Serve a Pasquale per una revisione veloce dal telefono, senza aprire Buffer; non c'è niente da approvare.
+6. Aggiorna calendario e tabella Task di `PROGETTO.md`, scrive un resoconto breve in italiano.
 
 ## Perché sul Mac e non nel cloud
 
@@ -75,5 +76,5 @@ L'indirizzo del webhook è segreto (chi lo ha può scrivere in #unclock-x, solo 
 
 - 29/10/2026: pianificata "Unclock: post X della settimana" creata da Claude Code, venerdì alle 10:00, modalità Auto. Buffer: account pasquale.ercolino98, organizzazione "My Organization", fuso Europe/Rome, piano gratuito (3 canali, 10 post programmati alla volta), canale X `Pasquale_im` collegato.
 - 29/10/2026: prova riuscita con una bozza (immagine dal Pi letta 1600x900 PNG), poi cancellata. Buffer usa l'indirizzo del Pi, non una copia sua: il Pi deve restare acceso finché i post non sono usciti.
-- 29/10/2026: la settimana 1 (prevista 29/10-03/11) spostata a lun 02/11 - ven 06/11 (lun 9:30, mar 10:00, gio 9:30, ven 9:00) e **programmata su Buffer da Claude**, video compreso. Tolto l'obbligo dei 30-45 minuti online: Pasquale risponde quando può. Primo giro della pianificata venerdì 30/10: prepara i post del 09-13/11.
+- 29/10/2026: la settimana 1 (prevista 29/10-03/11) spostata a lun 02/11 - ven 06/11 (lun 9:30, mar 10:00, gio 9:30, ven 9:00) e **programmata su Buffer da Claude**, video compreso. Tolto l'obbligo dei 30-45 minuti online: Pasquale risponde quando può. Primo giro della pianificata venerdì 30/10: prepara i post del 09-13/11. Il riepilogo Slack della settimana 02-06/11 è stato mandato a mano il 29/10.
 - 29/10/2026: avviso su Slack quando un post esce, **nel cloud** (funziona anche col Mac spento): routine "Unclock: avviso post X (cloud)", https://claude.ai/code/routines/trig_01LG916LJiVKC3taXJ97s4go, feriali alle 11:30 ora italiana (cron `30 10 * * 1-5` in UTC: dall'ora legale, fine marzo, diventa le 12:30), connettori solo Buffer e Slack. Legge i post di oggi da Buffer e scrive a Pasquale in messaggio diretto su Slack (workspace pasqualeim, utente `U0CDER0KVRS`) "Uscito su X" con link o "Post X non uscito" con il motivo; senza post quel giorno non scrive niente; non tocca Buffer né X. La prima versione locale (`unclock-avviso-post-x`, feriali 11:15) è spenta: dipendeva dal Mac acceso. Lo stato "uscito" nel calendario lo aggiorna la pianificata del venerdì leggendo Buffer.
