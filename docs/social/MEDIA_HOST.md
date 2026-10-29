@@ -97,6 +97,82 @@ mostra le ultime righe del log.
 
 Se l'IP del Pi cambia (lo assegna il router), il log dirà "Pi non raggiungibile" anche a casa: aggiorna `HostName` nel blocco `unclock-pi` di `~/.ssh/config`. Per evitarlo, prenota l'indirizzo `192.168.1.33` per il Pi nelle impostazioni DHCP del router Vodafone.
 
+### Verificare che la copia funzioni
+
+1. Metti un'immagine qualsiasi in `marketing/images/x/`, per esempio `2026-10-29_prova.png`.
+2. Lancia la copia a mano (comando sopra), oppure aspetta al massimo un'ora.
+3. Apri `https://media.getunclock.app/2026-10-29_prova.png` dal telefono in 4G: deve comparire l'immagine.
+4. In `~/Library/Logs/unclock-sync.log` deve esserci la riga "copiati 1 file".
+5. Il file di prova resta sul Pi (la copia non cancella): per toglierlo, chiedi a Hermes (comandi sotto).
+
+Da Terminale, la stessa prova: `curl -s -o /dev/null -w "%{http_code}\n" https://media.getunclock.app/<nome>` deve dare `200`; con l'indirizzo senza nome di file deve dare `404`.
+
+### Problemi della copia automatica
+
+| Cosa vedi | Cosa vuol dire | Cosa fare |
+|---|---|---|
+| Nel log "Pi non raggiungibile" mentre sei a casa | Pi spento, o il suo IP è cambiato | Controlla che il Pi sia acceso; trova l'IP nuovo (app del router, o `arp -a` dal Mac: cerca `raspberrypi4`) e aggiornalo in `~/.ssh/config`; poi prenota l'IP sul router |
+| Nel log "errore rsync: ... Permission denied (publickey)" | La chiave sul Pi è stata tolta o cambiata | Reinstallala dal Mac: `ssh-copy-id -i ~/.ssh/unclock_pi.pub -o PubkeyAuthentication=no -o PreferredAuthentications=password pasquale@192.168.1.33` (chiede la password del Pi), poi chiedi a Hermes di rimettere la limitazione (comandi sotto) |
+| `ssh-copy-id` chiede la password e poi "Connection closed" | Il Mac prova prima le altre chiavi e il Pi chiude dopo troppi tentativi | Usa il comando della riga sopra: le due opzioni `-o` fanno provare solo la password (è successo il 29/10) |
+| Nel log "errore rsync: ... rrsync" o "not allowed" | La riga della chiave sul Pi ha un percorso diverso da `/home/pasquale/media` | Chiedi a Hermes di mostrarti la riga e rimetterla come scritto sopra |
+| Nessuna riga nel log da giorni, anche dopo file nuovi | Il LaunchAgent non gira | `launchctl print gui/$(id -u)/app.getunclock.syncmedia` deve rispondere; se dice "not found", riattivalo con il comando `bootstrap` sopra |
+| Nel log "Operation not permitted" | macOS ha negato a `bash` la lettura di `Documents` (il 29/10 non succedeva) | Impostazioni di Sistema → Privacy e sicurezza → Accesso completo al disco → aggiungi `/bin/bash` |
+| Il file c'è sul Pi ma l'indirizzo dà "Forbidden" | Permessi del file sbagliati | Chiedi a Hermes il `chmod 644` (sotto); la copia mette già 644, quindi succede solo a file messi a mano |
+
+Nota: anche `x_banner_it.png` (il banner del profilo X) finisce sul Pi, perché è un `.png` in `images/x/`. È un'immagine già pubblica, va bene così.
+
+### Comandi da dare a Hermes
+
+Hermes lavora sul Pi; questi comandi si possono incollare a lui così come sono. Nessuno tocca Caddy o cloudflared.
+
+Vedere cosa c'è nella cartella pubblica:
+
+```
+ls -la /home/pasquale/media
+```
+
+Togliere un file dalla cartella pubblica (solo se nessun post programmato su Buffer lo usa):
+
+```
+rm /home/pasquale/media/<nome del file>
+```
+
+Sistemare i permessi di tutti i file (errore "Forbidden"):
+
+```
+chmod 644 /home/pasquale/media/*
+```
+
+Vedere la riga della chiave del Mac (deve iniziare con `command="/usr/bin/rrsync -wo /home/pasquale/media",restrict` e finire con `unclock-sync@mac`):
+
+```
+grep unclock-sync@mac ~/.ssh/authorized_keys
+```
+
+Rimettere la limitazione alla chiave del Mac (dopo una reinstallazione con `ssh-copy-id`):
+
+```
+sed -i '/unclock-sync@mac$/{/^command=/!s|^ssh-ed25519|command="/usr/bin/rrsync -wo /home/pasquale/media",restrict ssh-ed25519|}' ~/.ssh/authorized_keys
+```
+
+Togliere del tutto l'accesso del Mac (la copia automatica si ferma, il sito dei media resta su):
+
+```
+sed -i '/unclock-sync@mac$/d' ~/.ssh/authorized_keys
+```
+
+Tornare alla copia di `authorized_keys` com'era prima della limitazione (il 29/10):
+
+```
+cp ~/.ssh/authorized_keys.bak-unclock ~/.ssh/authorized_keys
+```
+
+Controllare che `rrsync` esista (serve alla limitazione):
+
+```
+command -v rrsync    # /usr/bin/rrsync, dal pacchetto rsync
+```
+
 ## Regole
 
 - **Nella cartella solo i media dei post.** Chi conosce il nome esatto di un file lo può aprire. Niente file privati, niente schermate con notifiche vere: solo dati di prova, come nei post.

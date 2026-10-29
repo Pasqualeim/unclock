@@ -41,6 +41,7 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 | Video promo e immagini dei post (testi, scene, ritmo) | `tools/store/promo_video.py` (rigenera `marketing/video/` e `marketing/images/post_*`) | bozze in `marketing/x/` e `marketing/forum/` |
 | X: piano settimanale, post, regole per crescere | `.claude/agents/social-manager.md` (regole), `marketing/x/` (piani) | PROGETTO.md (task 0a) |
 | Media dei post online (Raspberry Pi, tunnel `media.getunclock.app`, Buffer) | `docs/social/MEDIA_HOST.md` | PROGETTO.md (task) |
+| Pianificata settimanale dei post X (venerdì, bozze su Buffer) | `docs/social/PIANIFICATA_VENERDI.md` | PROGETTO.md (task) |
 | Capo progetto e subagenti | `CLAUDE.md` app ("Project lead", "Agents") | PROGETTO.md (decisioni) |
 
 ## Decisioni
@@ -63,7 +64,7 @@ In ordine di priorità. Chi: [P] Pasquale, [C] Claude.
 | # | Task | Chi | Stato |
 |---|---|---|---|
 | 0a | X: seguire il piano settimanale di `social-manager` (`marketing/x/`), 3-4 post a settimana e 15 minuti al giorno di risposte | P | In corso |
-| 0b | Pianificata locale del venerdì (app desktop, Mac a casa): genera testi e media della settimana in `marketing/`, la copia sul Pi parte da sola, su Buffer solo bozze che Pasquale approva. Manca l'orario (mattina o pomeriggio) | C+P | Da fare |
+| 0b | Pianificata del venerdì (scheda Code dell'app desktop, Mac a casa): post X della settimana dopo, media sul Pi, su Buffer solo bozze che Pasquale approva. Processo e prompt in `docs/social/PIANIFICATA_VENERDI.md`; mancano orario, creazione e primo giro di prova | C+P | Da fare |
 | 0 | feddit.it: account, post italiano su Le Alternative (dal 28/10), poi Informatica con tono "come l'ho fatta"; poi XDA (Android Apps & Games, testo inglese); un giorno tra un post e l'altro, titolo e prima riga diversi. Testi in `marketing/forum/2026-10-27_post-tester.md` | P | Da fare |
 | 1 | Reddit: un post ogni due giorni dal 29/10, primo r/AppFeedbackItalia (piano e testi in `marketing/forum/PIANO_REDDIT.md`). Account con un po' di storia (circa 50 di karma, commentando davvero), poi per primo r/AppFeedbackItalia (in italiano, fatto per cercare tester: problema, pubblico, link, cosa testare), poi in inglese r/androidapps (regole e flair da dev), r/ProductivityApps, r/SideProject e r/betatests; r/remotework e r/androiddev solo per commentare; non r/AndroidClosedTesting e r/AndroidTesting (scambi tra sviluppatori) né r/reactnative (storia, screenshot, link, richiesta di riscontri; testo scritto con Claude, passato da humanizer); leggere prima le regole di ogni subreddit | P | Da fare |
 | 2 | Prima di BetaList: percorso inglese controllato il 28/10 (home, /en/try, conferma, informativa, testo mail EN: tutto in inglese, test della funzione ok). Restano: (a) tetto del codice 50 mail/giorno sotto i 100 di Resend free (3.000/mese, azzerati a mezzanotte UTC): oltre il tetto la pagina dice comunque "Done, check your inbox" e la mail non parte; decidere se alzarlo a ~95 o passare a Resend Pro; (b) il canale Telegram `unclock_it`, linkato in pagina e nella mail EN, è in italiano; (c) P: controllare che il test chiuso sia disponibile in tutti i paesi e che l'account Netlify non sia su un piano legacy (100 invii form/mese); (d) una iscrizione vera da un Gmail inglese, con ok di P | C+P | In corso |
