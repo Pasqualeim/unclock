@@ -210,6 +210,8 @@ There is no Trello board any more (it cost too many tokens). The one list of ope
 
 Everything happens in this project, with the main session and its subagents: social strategy and copy for every channel (Instagram, X, Reddit, feddit.it, XDA; plan in `marketing/instagram/PIANO.md`, drafts in one folder per channel (`marketing/x/`, `marketing/forum/`; map and naming rules in `marketing/README.md`), every word through `humanizer`), research and graphics (on Opus; the promo video and post stills come from `tools/store/promo_video.py`), never handed to an outside tool. When Pasquale asks for prompts to generate images or videos, write them tool-neutral (what to show, size, palette, `docs/IDEA.md` rules), since he may run them anywhere, here included.
 
+Social automation (media copied to the Raspberry Pi, the Friday routine that schedules X posts on Buffer, Slack notices): map, locations and first checks in `docs/social/AUTOMAZIONI.md`; read it first when Pasquale reports a problem with any of these flows.
+
 Whenever a user-visible feature or UI change is completed, append one bullet to `marketing/DEV_LOG.md` (date + feature): it feeds the Instagram diary.
 
 ## Project lead (capo progetto)
@@ -222,7 +224,7 @@ The main session is the project lead for three linked areas: app (this repo), si
 - **After every change**, judge its impact on the other two areas (visible app change → site screenshots/text, `marketing/DEV_LOG.md`, a social draft; permission or data flow → site privacy, `docs/store/LISTING.md`; site fact → app strings) and propose the follow-up tasks to Pasquale before doing them.
 - **Keep facts aligned** (formerly `docs-keeper`): each topic has one owner file, listed in "Mappa dei fatti" in `PROGETTO.md`. Write a fact in full only in its owner and link to it elsewhere; when two files disagree, the code wins, then the owner. A new topic that lands in several files gets a row in the map.
 - **Session end:** update `PROGETTO.md` (task table, decisions, parked ideas) and the ROADMAP when something changed.
-- **No publishing without Pasquale's ok:** no deploy, push of the site, social post (Instagram, X, Reddit, feddit), email, Telegram message or Play Console action unless he says yes in this conversation.
+- **No publishing without Pasquale's ok:** no deploy, push of the site, social post (Instagram, Reddit, feddit), email, Telegram message or Play Console action unless he says yes in this conversation. Exception since 2026-10-29: posts on X are prepared and scheduled on Buffer by the Friday routine without review (`docs/social/PIANIFICATA_VENERDI.md`).
 
 ## Agents
 

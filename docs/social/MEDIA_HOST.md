@@ -1,6 +1,6 @@
 # Le immagini dei post sul Raspberry Pi
 
-Questo documento spiega cosa è stato fatto il 29/10/2026 sul Raspberry Pi di casa, perché, e cosa controllare se un giorno smette di funzionare. La prima parte è a parole semplici; i dettagli tecnici sono in fondo.
+Questo documento (uno dei flussi elencati in `AUTOMAZIONI.md`) spiega cosa è stato fatto il 29/10/2026 sul Raspberry Pi di casa, perché, e cosa controllare se un giorno smette di funzionare. La prima parte è a parole semplici; i dettagli tecnici sono in fondo.
 
 ## Il problema da risolvere
 

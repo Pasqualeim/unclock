@@ -1,5 +1,7 @@
 # La pianificata del venerdì (post su X in automatico)
 
+Parte dei flussi descritti in `AUTOMAZIONI.md`.
+
 Deciso il 29/10/2026 da Pasquale: i post su X (@Pasquale_im) li prepara **e li programma su Buffer Claude, da solo**, ogni venerdì. Pasquale non rilegge, non approva e non programma niente. Durata: almeno un paio di mesi (fino a fine dicembre 2026), poi si guarda com'è andata.
 
 ## Il ciclo
@@ -55,11 +57,7 @@ Il prompt valido è uno solo: `~/.claude/scheduled-tasks/unclock-post-x-settiman
 
 ## Slack
 
-Workspace `pasqualeim` (piano gratuito), solo Pasquale. Gli avvisi dei post vanno nel canale privato **#unclock-x** (id `C0CD989A1K8`, creato il 29/10/2026), che ha in cima un messaggio che spiega i tre tipi di avviso: :white_check_mark: uscito, :warning: non uscito, :x: controllo non riuscito. I canali `#social`, `#nuovo-canale` e `#tutta-pasqualeim` sono quelli creati da Slack all'apertura del workspace: non servono, si possono archiviare.
-
-**Notifiche sul telefono:** i messaggi scritti tramite il connettore Slack risultano scritti da Pasquale stesso, e Slack non notifica mai i propri messaggi. Per questo il 29/10/2026 Claude ha creato l'app Slack **Unclock avvisi** (id `A0CD51K5GH1`, gestione su api.slack.com/apps) con un solo permesso: un Incoming Webhook che scrive in #unclock-x. La routine cloud scrive attraverso il webhook, quindi il messaggio arriva da un'app e il telefono suona; se il webhook non risponde, ripiega sul connettore Slack (messaggio senza notifica). Ogni avviso inizia con la menzione di Pasquale (`<@U0CDER0KVRS>`): senza menzione Slack, con le impostazioni di base, non manda la notifica (provato il 29/10). Se la notifica non arriva lo stesso: la "z" sulla foto profilo in Slack vuol dire notifiche in pausa (Non disturbare, anche a orari pianificati); sul Mac, Impostazioni di Sistema → Notifiche → Slack.
-
-L'indirizzo del webhook è segreto (chi lo ha può scrivere in #unclock-x, solo lì): sta solo nel prompt della routine cloud, mai nel repo. Se finisse in giro: api.slack.com/apps → Unclock avvisi → Incoming Webhooks → rimuovi il webhook e creane uno nuovo, poi chiedi a Claude di aggiornare la routine.
+Riepilogo del venerdì e avvisi dei post: `SLACK.md`. Mappa di tutti i flussi: `AUTOMAZIONI.md`.
 
 ## Se qualcosa va storto
 
@@ -69,7 +67,7 @@ L'indirizzo del webhook è segreto (chi lo ha può scrivere in #unclock-x, solo 
 | Un post su Buffer senza immagine o in errore | Il media non era sul Pi o il Pi era spento all'ora di uscita | `~/Library/Logs/unclock-sync.log` e la tabella dei problemi in `MEDIA_HOST.md`; il venerdì dopo la pianificata lo riprogramma da sola |
 | Il resoconto dice "Pi non raggiungibile" | Pi spento, IP cambiato, o la pianificata gira senza rete di casa | Tabella dei problemi in `MEDIA_HOST.md` |
 | Due post nello stesso giorno su X | Il calendario non era aggiornato | Dillo a Claude: sistema calendario e Buffer |
-| Nessun messaggio Slack in un giorno con post | Routine cloud non partita o Slack/Buffer scollegati su claude.ai | Apri la routine (link in Stato) e guarda l'ultima esecuzione; ricollega i connettori da claude.ai |
+| Nessun messaggio Slack in un giorno con post | Routine cloud non partita o Slack/Buffer scollegati su claude.ai | `SLACK.md`, "Se non arriva la notifica" |
 | Un post esce con un testo che non va | Nessuno l'ha riletto (scelta del 29/10) | Cancellalo da X; dillo a Claude per correggere il prompt |
 
 ## Stato
@@ -77,4 +75,4 @@ L'indirizzo del webhook è segreto (chi lo ha può scrivere in #unclock-x, solo 
 - 29/10/2026: pianificata "Unclock: post X della settimana" creata da Claude Code, venerdì alle 10:00, modalità Auto. Buffer: account pasquale.ercolino98, organizzazione "My Organization", fuso Europe/Rome, piano gratuito (3 canali, 10 post programmati alla volta), canale X `Pasquale_im` collegato.
 - 29/10/2026: prova riuscita con una bozza (immagine dal Pi letta 1600x900 PNG), poi cancellata. Buffer usa l'indirizzo del Pi, non una copia sua: il Pi deve restare acceso finché i post non sono usciti.
 - 29/10/2026: la settimana 1 (prevista 29/10-03/11) spostata a lun 02/11 - ven 06/11 (lun 9:30, mar 10:00, gio 9:30, ven 9:00) e **programmata su Buffer da Claude**, video compreso. Tolto l'obbligo dei 30-45 minuti online: Pasquale risponde quando può. Primo giro della pianificata venerdì 30/10: prepara i post del 09-13/11. Il riepilogo Slack della settimana 02-06/11 è stato mandato a mano il 29/10.
-- 29/10/2026: avviso su Slack quando un post esce, **nel cloud** (funziona anche col Mac spento): routine "Unclock: avviso post X (cloud)", https://claude.ai/code/routines/trig_01LG916LJiVKC3taXJ97s4go, feriali alle 11:30 ora italiana (cron `30 10 * * 1-5` in UTC: dall'ora legale, fine marzo, diventa le 12:30), connettori solo Buffer e Slack. Legge i post di oggi da Buffer e scrive a Pasquale in messaggio diretto su Slack (workspace pasqualeim, utente `U0CDER0KVRS`) "Uscito su X" con link o "Post X non uscito" con il motivo; senza post quel giorno non scrive niente; non tocca Buffer né X. La prima versione locale (`unclock-avviso-post-x`, feriali 11:15) è spenta: dipendeva dal Mac acceso. Lo stato "uscito" nel calendario lo aggiorna la pianificata del venerdì leggendo Buffer.
+- 29/10/2026: avviso su Slack quando un post esce, nel cloud (feriali 11:30, funziona col Mac spento), e riepilogo del venerdì su Slack: tutto in `SLACK.md`.
