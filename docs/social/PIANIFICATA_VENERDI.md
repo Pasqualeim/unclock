@@ -56,7 +56,9 @@ Il prompt valido è uno solo: `~/.claude/scheduled-tasks/unclock-post-x-settiman
 
 Workspace `pasqualeim` (piano gratuito), solo Pasquale. Gli avvisi dei post vanno nel canale privato **#unclock-x** (id `C0CD989A1K8`, creato il 29/10/2026), che ha in cima un messaggio che spiega i tre tipi di avviso: :white_check_mark: uscito, :warning: non uscito, :x: controllo non riuscito. I canali `#social`, `#nuovo-canale` e `#tutta-pasqualeim` sono quelli creati da Slack all'apertura del workspace: non servono, si possono archiviare.
 
-**Notifiche sul telefono:** i messaggi scritti tramite il connettore Slack risultano scritti da Pasquale stesso, e Slack non notifica mai i propri messaggi. Per avere la notifica serve che a scrivere sia un'app (un "bot"): vedi la riga 0b dei Task in `PROGETTO.md`.
+**Notifiche sul telefono:** i messaggi scritti tramite il connettore Slack risultano scritti da Pasquale stesso, e Slack non notifica mai i propri messaggi. Per questo il 29/10/2026 Claude ha creato l'app Slack **Unclock avvisi** (id `A0CD51K5GH1`, gestione su api.slack.com/apps) con un solo permesso: un Incoming Webhook che scrive in #unclock-x. La routine cloud scrive attraverso il webhook, quindi il messaggio arriva da un'app e il telefono suona; se il webhook non risponde, ripiega sul connettore Slack (messaggio senza notifica).
+
+L'indirizzo del webhook è segreto (chi lo ha può scrivere in #unclock-x, solo lì): sta solo nel prompt della routine cloud, mai nel repo. Se finisse in giro: api.slack.com/apps → Unclock avvisi → Incoming Webhooks → rimuovi il webhook e creane uno nuovo, poi chiedi a Claude di aggiornare la routine.
 
 ## Se qualcosa va storto
 
