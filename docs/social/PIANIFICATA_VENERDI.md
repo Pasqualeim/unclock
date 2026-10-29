@@ -5,10 +5,10 @@ Deciso il 29/10/2026. Ogni venerdì Claude prepara da solo i post su X della set
 ## Come funziona, in breve
 
 1. **Venerdì, all'ora scelta** (le 10:00), parte una pianificata dell'app desktop di Claude sul Mac.
-2. Claude legge il piano e le regole, scrive il piano della settimana dopo in `marketing/x/AAAA-MM-GG_settimana-N.md` (3-4 post, mattine dei feriali 9-11, link sempre nella prima risposta), con testi passati da humanizer.
+2. Claude legge il calendario (`marketing/x/CALENDARIO.md`), sposta i post saltati e, se servono, scrive i post nuovi fino a due settimane avanti in `marketing/x/AAAA-MM-GG_settimana-N.md` (3-4 post a settimana, mattine dei feriali 9-11, link sempre nella prima risposta), con testi passati da humanizer.
 3. Crea immagini e video in `marketing/images/x/` e `marketing/video/x/`, con la **data di uscita** davanti al nome.
 4. La copia automatica li porta sul Raspberry Pi (`docs/social/MEDIA_HOST.md`): la pianificata la lancia subito, senza aspettare l'ora.
-5. Su Buffer crea **solo bozze** (`saveToDraft`), una per post, con il media preso da `https://media.getunclock.app/<nome>`.
+5. Su Buffer crea **solo bozze** (`saveToDraft`), una per post non ancora su Buffer, con il media preso da `https://media.getunclock.app/<nome>`.
 6. Pasquale, nel weekend o lunedì presto, apre Buffer, corregge se serve e programma lui le bozze all'orario scritto nel piano.
 
 ## Perché sul Mac e non nel cloud
@@ -28,36 +28,25 @@ La pianificata deve girare in una sessione con la shell vera del Mac (la scheda 
 - Grafica e video su Opus.
 - Alla fine aggiorna la tabella Task di `PROGETTO.md` e scrive un resoconto breve in italiano.
 
-## Prompt da dare a Cowork
+## Il calendario e le regole contro gli accavallamenti
 
-Da incollare in Cowork per creare la pianificata. Cambia l'orario se scegli il pomeriggio.
+Deciso il 29/10/2026, quando la settimana 1 è stata spostata di 7 giorni. Tutto parte da un **calendario unico**, `marketing/x/CALENDARIO.md` (non in git, come tutto `marketing/`): una riga per post con data, ora, media, piano, stato (`pianificato` → `bozza` → `programmato` → `uscito`, oppure `saltato`) e id della bozza su Buffer. La pianificata lo legge per primo e lo aggiorna per ultimo.
 
-```text
-Crea una pianificata nell'app desktop di Claude sul mio Mac, nella scheda Code (Claude Code), non in Cowork: le serve la shell vera del Mac per raggiungere il Raspberry Pi di casa.
+Regole che valgono a ogni giro, anche se un venerdì salta o la pianificata parte due volte:
 
-- Nome: Unclock: post X della settimana
-- Quando: ogni venerdì alle 10:00 (ora italiana)
-- Cartella di lavoro: /Users/pasqualeercolino/Documents/Developer/NotificationBlocker
-- Modello: Opus
-- Connettori: Buffer
-- Prompt della pianificata: il testo tra le righe ===== qui sotto, così com'è.
+- un post per giorno feriale al massimo, 4 a settimana (lun-ven), ore 9-11;
+- prima di creare una bozza controlla Buffer e il calendario: se il post c'è già, non lo ricrea;
+- un post non uscito con la data passata diventa `saltato` e va al primo giorno libero da domani in poi; la sua bozza su Buffer si aggiorna, non se ne crea un'altra;
+- i post nuovi vanno solo dopo l'ultimo post già nel calendario, mai a riempire buchi prima;
+- orizzonte: il calendario copre fino al venerdì della settimana dopo la prossima, non oltre; un venerdì saltato si recupera al giro dopo, sempre entro l'orizzonte;
+- al massimo 10 post programmati su Buffer (piano gratuito);
+- i post `programmato` e `uscito` non si toccano.
 
-=====
-Sei il capo progetto di Unclock (leggi CLAUDE.md e PROGETTO.md). Oggi è venerdì: prepara i post su X (@Pasquale_im) della settimana prossima, da lunedì a venerdì. Non pubblicare e non programmare niente: su Buffer solo bozze.
+**Cosa fa Pasquale:** quando programma una bozza o pubblica a mano, cambia lo stato nel calendario (o lo chiede a Claude). Se non lo fa, la pianificata vede la bozza su Buffer e non la duplica, ma potrebbe spostarla come `saltato` se la data è passata.
 
-1. Leggi: docs/IDEA.md, marketing/README.md, docs/social/PIANIFICATA_VENERDI.md, docs/social/MEDIA_HOST.md, marketing/DEV_LOG.md (novità dell'app), e i piani già fatti in marketing/x/ (il più recente per ultimo). Non ripetere temi o immagini già usati.
-2. Scrivi marketing/x/<data di oggi>_settimana-<N>.md: 3 o 4 post (uno può essere un thread), mattine dei feriali tra 9 e 11 ora italiana, mai sera né weekend. Per ogni post: giorno e ora, nome del media, testo, prima risposta con il link (https://getunclock.app/it/prova o /en/try per l'inglese), una riga sul perché. Il link sta sempre nella prima risposta, mai nel post. Ogni testo passa dalla skill humanizer. Tono: una persona che condivide un'idea, niente vendita, mai "gratis".
-3. Crea i media: immagini 1600x900 PNG in marketing/images/x/, video MP4 1920x1080 in marketing/video/x/, nome AAAA-MM-GG_slug con la data di uscita del post. Scrivi lo script marketing/tools/x_week<N>.py sul modello di marketing/tools/x_week1.py (riusa gli helper di tools/store/promo_video.py, stesso venv) e lancialo. Solo dati di esempio, mai notifiche vere. Guarda ogni immagine prima di andare avanti.
-4. Manda i media sul Pi: bash tools/social/sync_media_pi.sh. Poi, per ogni media: curl -s -o /dev/null -w "%{http_code}" https://media.getunclock.app/<nome> deve dare 200. Se non dà 200, non mettere quel media su Buffer e scrivilo nel resoconto.
-5. Su Buffer (connettore Buffer): get_account, list_channels, prendi il canale X di @Pasquale_im. Per ogni post crea una bozza con create_post, saveToDraft: true, schedulingType automatic, testo del post, media da https://media.getunclock.app/<nome> (alt text in italiano per le immagini), e la prima risposta come secondo elemento di metadata.twitter.thread. Non usare mai shareNow, addToQueue, shareNext o customScheduled.
-6. Aggiorna la tabella Task di PROGETTO.md (riga 0a: settimana pronta, in attesa dell'ok di Pasquale). marketing/ non è in git: non committare i media. Committa e pusha su main solo i file tracciati che hai cambiato.
-7. Resoconto finale in italiano, breve: il piano (giorni, orari, titoli), i media creati, le bozze su Buffer, cosa non è andato. Ricorda a Pasquale che le bozze vanno approvate e programmate da lui.
+## Il prompt
 
-Se qualcosa blocca un passo (Pi non raggiungibile, Buffer non risponde, uno script fallisce), non improvvisare: fai il resto e scrivilo nel resoconto.
-=====
-
-Dopo averla creata, dimmi il nome della pianificata, quando parte la prima volta e come lanciarla a mano.
-```
+La pianificata è stata creata da Claude Code (non da Cowork) con lo strumento delle attività pianificate. Il prompt valido è uno solo: `~/.claude/scheduled-tasks/unclock-post-x-settimana/SKILL.md`. Si legge e si cambia dalla pagina Pianificate dell'app (o chiedendo a Claude). Contiene le regole qui sopra e i passi: post saltati, post nuovi con testi da humanizer, media, copia sul Pi con controllo 200, bozze su Buffer (canale `6ae38e932f1f5ed64812678d`), PROGETTO.md, resoconto.
 
 ## Se qualcosa va storto
 
@@ -73,3 +62,4 @@ Dopo averla creata, dimmi il nome della pianificata, quando parte la prima volta
 - 29/10/2026: creata dalla sessione Code con lo strumento delle attività pianificate (non da Cowork): "Unclock: post X della settimana", venerdì alle 10:00 (parte verso le 10:10; spostata dalle 9:00 il 29/10), modalità Auto. Il prompt è in `~/.claude/scheduled-tasks/unclock-post-x-settimana/SKILL.md` (uguale a quello qui sopra, con i percorsi assoluti); orario e prompt si cambiano dalla pagina Pianificate dell'app. Primo giro venerdì 30/10: controllare il resoconto e le bozze su Buffer.
 - 29/10/2026: Buffer controllato dal connettore: account pasquale.ercolino98, organizzazione "My Organization", fuso Europe/Rome, piano gratuito (3 canali, 10 post programmati alla volta). Canale X collegato lo stesso giorno: `Pasquale_im` (service `twitter`, id `6ae38e932f1f5ed64812678d`), attivo.
 - 29/10/2026: prova riuscita. Una bozza con immagine da `https://media.getunclock.app/2026-10-28_niente_internet.png` e una risposta in thread è stata accettata da Buffer (stato `draft`, immagine letta 1600x900 PNG), poi cancellata. Nella bozza Buffer tiene l'indirizzo del Pi come anteprima, non una copia sua: il Pi deve restare acceso finché i post non sono usciti (regola in `MEDIA_HOST.md`).
+- 29/10/2026: settimana 1 spostata di 7 giorni (si parte giovedì 05/11; media rinominati con le date nuove e copiati sul Pi, 200), tolto l'obbligo dei 30-45 minuti online, aggiunti calendario unico e regole contro gli accavallamenti. Il giro di venerdì 30/10 deve solo fare le bozze dei 4 post e al massimo 2 post nuovi per l'11-13/11.

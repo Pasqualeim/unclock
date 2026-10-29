@@ -54,7 +54,7 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 - 2026-10-26: Instagram in pausa; i canali per trovare tester sconosciuti sono BetaList e Reddit (punti 1-3 dei Task). Gli scambi tra sviluppatori (r/AndroidClosedTesting) danno al massimo i 12 di Google, non utenti veri; niente servizi a pagamento di tester e niente premi.
 - 2026-10-27: tolto `social-manager`: per i testi brevi chiamarlo costava più che scriverli nella sessione principale, e video e grafiche non poteva farli. Testi social e grafica li fa il capo progetto (testi da humanizer, grafica su Opus).
 - 2026-10-27: torna `social-manager`, solo per X e su Opus: piano settimanale, post pronti, immagini e video dall'app e dal sito, consigli per crescere. Gli altri canali restano al capo progetto.
-- 2026-10-28: X si concentra sugli orari che danno più diffusione, non su quando il pubblico stacca: mattine dei feriali 9-11 (ora italiana), mai sera o weekend, 30-45 minuti online dopo ogni post. Dopo 3 settimane decidono le statistiche di X del profilo. Piano della settimana 1 riprogrammato.
+- 2026-10-28: X si concentra sugli orari che danno più diffusione, non su quando il pubblico stacca: mattine dei feriali 9-11 (ora italiana), mai sera o weekend; dopo i post Pasquale risponde quando può (il 29/10 tolto l'obbligo dei 30-45 minuti online). Dopo 3 settimane decidono le statistiche di X del profilo. Piano della settimana 1 riprogrammato.
 - Niente pubblicazioni (deploy, push, post, mail, Play Console) senza ok di Pasquale.
 
 ## Task
@@ -63,7 +63,7 @@ In ordine di priorità. Chi: [P] Pasquale, [C] Claude.
 
 | # | Task | Chi | Stato |
 |---|---|---|---|
-| 0a | X: seguire il piano settimanale di `social-manager` (`marketing/x/`), 3-4 post a settimana e 15 minuti al giorno di risposte | P | In corso |
+| 0a | X: 3-4 post a settimana da `marketing/x/CALENDARIO.md` (si parte giovedì 05/11; bozze su Buffer dalla pianificata del venerdì, Pasquale le approva e programma), risposte quando può | P | In corso |
 | 0b | Pianificata del venerdì (scheda Code dell'app desktop, Mac a casa): post X della settimana dopo, media sul Pi, su Buffer solo bozze che Pasquale approva. Processo e prompt in `docs/social/PIANIFICATA_VENERDI.md`. Creata il 29/10 (venerdì 10:00); da controllare il primo giro del 30/10 | C+P | In corso |
 | 0 | feddit.it: account, post italiano su Le Alternative (dal 28/10), poi Informatica con tono "come l'ho fatta"; poi XDA (Android Apps & Games, testo inglese); un giorno tra un post e l'altro, titolo e prima riga diversi. Testi in `marketing/forum/2026-10-27_post-tester.md` | P | Da fare |
 | 1 | Reddit: un post ogni due giorni dal 29/10, primo r/AppFeedbackItalia (piano e testi in `marketing/forum/PIANO_REDDIT.md`). Account con un po' di storia (circa 50 di karma, commentando davvero), poi per primo r/AppFeedbackItalia (in italiano, fatto per cercare tester: problema, pubblico, link, cosa testare), poi in inglese r/androidapps (regole e flair da dev), r/ProductivityApps, r/SideProject e r/betatests; r/remotework e r/androiddev solo per commentare; non r/AndroidClosedTesting e r/AndroidTesting (scambi tra sviluppatori) né r/reactnative (storia, screenshot, link, richiesta di riscontri; testo scritto con Claude, passato da humanizer); leggere prima le regole di ogni subreddit | P | Da fare |
