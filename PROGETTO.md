@@ -72,6 +72,7 @@ In ordine di priorità. Chi: [P] Pasquale, [C] Claude.
 | 4 | Confermare in Play Console l'approvazione del test chiuso (in revisione dal 22/10) | P | In attesa |
 | 5 | Attivare la notifica email di Netlify Forms per il modulo `signup` | P | Da fare |
 | 6 | Sfoltire i doppioni della Mappa dei fatti, prossimo il CLAUDE.md dell'app (ROADMAP 3, 3a, 3b fatte) | C | In corso |
+| 0b | Notifica push degli avvisi X: oggi la routine scrive in #unclock-x come Pasquale stesso, e Slack non notifica i propri messaggi. P crea un'app Slack con Incoming Webhook sul canale #unclock-x e passa l'URL a C, che fa scrivere la routine tramite il webhook | P, poi C | Da fare |
 | — | Obiettivo di fondo: far provare l'app a più persone possibile prima del Play Store (tappe 12, 100, oltre) | P, C | In corso |
 | — | Ricorrente: a ogni cambio visibile dell'app, rifare screenshot e immagini del sito | C | Sempre |
 | — | Dopo: controllare il limite mensile di Netlify Forms se le iscrizioni superano le 100 al mese | P | Dopo |

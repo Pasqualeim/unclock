@@ -52,6 +52,12 @@ Regole a ogni giro, anche se un venerdì salta o la pianificata parte due volte:
 
 Il prompt valido è uno solo: `~/.claude/scheduled-tasks/unclock-post-x-settimana/SKILL.md`. Si legge e si cambia dalla pagina Pianificate dell'app, o chiedendo a Claude. Contiene il ciclo e le regole qui sopra, con il canale Buffer (`6ae38e932f1f5ed64812678d`). Modalità Auto: gira senza chiedere conferme.
 
+## Slack
+
+Workspace `pasqualeim` (piano gratuito), solo Pasquale. Gli avvisi dei post vanno nel canale privato **#unclock-x** (id `C0CD989A1K8`, creato il 29/10/2026), che ha in cima un messaggio che spiega i tre tipi di avviso: :white_check_mark: uscito, :warning: non uscito, :x: controllo non riuscito. I canali `#social`, `#nuovo-canale` e `#tutta-pasqualeim` sono quelli creati da Slack all'apertura del workspace: non servono, si possono archiviare.
+
+**Notifiche sul telefono:** i messaggi scritti tramite il connettore Slack risultano scritti da Pasquale stesso, e Slack non notifica mai i propri messaggi. Per avere la notifica serve che a scrivere sia un'app (un "bot"): vedi la riga 0b dei Task in `PROGETTO.md`.
+
 ## Se qualcosa va storto
 
 | Cosa vedi | Cosa vuol dire | Cosa fare |
