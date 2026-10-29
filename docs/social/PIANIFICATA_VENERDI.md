@@ -70,4 +70,4 @@ Dopo averla creata, dimmi il nome della pianificata, quando parte la prima volta
 
 ## Stato
 
-- 29/10/2026: deciso il processo; prompt pronto. Da fare: scegliere l'orario (9:00 o pomeriggio), creare la pianificata, fare un primo giro a mano e controllare le bozze su Buffer.
+- 29/10/2026: creata dalla sessione Code con lo strumento delle attività pianificate (non da Cowork): "Unclock: post X della settimana", venerdì alle 9:00 (parte verso le 9:10), modalità Auto. Il prompt è in `~/.claude/scheduled-tasks/unclock-post-x-settimana/SKILL.md` (uguale a quello qui sopra, con i percorsi assoluti); orario e prompt si cambiano dalla pagina Pianificate dell'app. Primo giro venerdì 30/10: controllare il resoconto e le bozze su Buffer.
