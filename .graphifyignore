@@ -6,7 +6,6 @@
 *.mp4
 *.mov
 docs/store/screenshots/
-docs/store/video/
 docs/mockups/
 
 # Historical scaffolding brief, outdated (see CLAUDE.md)
@@ -16,5 +15,8 @@ docs/mockups/
 build/
 .gradle/
 .idea/
-.claude/
+# .claude/agents and .claude/hooks stay in the graph: the subagents and the commit hook are project rules
+.claude/settings*.json
+.claude/launch.json
+.claude/skills/
 graphify-out/

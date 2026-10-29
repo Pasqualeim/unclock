@@ -208,7 +208,7 @@ There is no Trello board any more (it cost too many tokens). The one list of ope
 
 ### Side work stays here
 
-Everything happens in this project, with the main session and its subagents: social strategy and copy for every channel (Instagram, X, Reddit, feddit.it, XDA; plan in `marketing/PIANO_INSTAGRAM.md`, drafts in `marketing/bozze/`, every word through `humanizer`), research and graphics (on Opus; the promo video and post stills come from `tools/store/promo_video.py`), never handed to an outside tool. When Pasquale asks for prompts to generate images or videos, write them tool-neutral (what to show, size, palette, `docs/IDEA.md` rules), since he may run them anywhere, here included.
+Everything happens in this project, with the main session and its subagents: social strategy and copy for every channel (Instagram, X, Reddit, feddit.it, XDA; plan in `marketing/instagram/PIANO.md`, drafts in one folder per channel (`marketing/x/`, `marketing/forum/`; map and naming rules in `marketing/README.md`), every word through `humanizer`), research and graphics (on Opus; the promo video and post stills come from `tools/store/promo_video.py`), never handed to an outside tool. When Pasquale asks for prompts to generate images or videos, write them tool-neutral (what to show, size, palette, `docs/IDEA.md` rules), since he may run them anywhere, here included.
 
 Whenever a user-visible feature or UI change is completed, append one bullet to `marketing/DEV_LOG.md` (date + feature): it feeds the Instagram diary.
 

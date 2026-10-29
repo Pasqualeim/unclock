@@ -7,7 +7,7 @@ Writes:
   app/src/main/res/drawable/ic_logo.xml                  (the same padlock as a tintable 32dp in-app icon)
   app/src/main/res/drawable/ic_notification_nook.xml     (the same padlock, white, for the status bar)
   docs/store/icon-512.png                                (Play Store icon, full bleed square)
-  docs/store/telegram-group.png                          (Telegram discussion group: the icon plus a speech bubble)
+  docs/social/telegram-group.png                         (Telegram discussion group: the icon plus a speech bubble)
 
 Edit the shapes here, not the generated files. Shapes are drawn on a 256 grid and scaled into the
 108 x 108 adaptive-icon viewport; the glyph stays inside the central 66dp safe zone. The clock hands
@@ -234,7 +234,7 @@ def write_telegram_group(size=640, ss=4):
     for k in (-1, 0, 1):  # three dots: someone is typing
         x, d = cx + k * 5.5 * u, 2 * u
         draw.ellipse([x - d, cy - d, x + d, cy + d], fill=rgb(BG_TOP))
-    img.resize((size, size), Image.LANCZOS).save(ROOT / "docs/store/telegram-group.png")
+    img.resize((size, size), Image.LANCZOS).save(ROOT / "docs/social/telegram-group.png")
 
 
 if __name__ == "__main__":
