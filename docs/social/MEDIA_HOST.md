@@ -181,22 +181,23 @@ Come resta il Pi se l'HD è staccato: si accende lo stesso (`nofail`); `/home/pa
 
 ### Istruzioni da incollare a Hermes
 
-```
-Devo spostare la cartella pubblica /home/pasquale/media sull'hard disk appena collegato al Pi, senza cambiare il suo percorso. Caddy (/etc/caddy/Caddyfile), cloudflared e ~/.ssh/authorized_keys NON vanno toccati.
+L'HD è un Toshiba EXT da 932 GiB in **FAT32** (UUID `6747-1E19`), già pieno al 73% di file di Pasquale: **non si formatta** (decisione del 30/10). FAT32 non ha i permessi di Linux, quindi proprietario e permessi si danno al montaggio (`uid`, `gid`, `umask`; `quiet` fa passare senza errore il `chmod` della copia dal Mac). Limite: un file al massimo 4 GB (i video dei post sono molto più piccoli). I media vanno in una sola sottocartella, `unclock-media`: è l'unica parte dell'HD visibile da internet, il resto resta privato.
 
-1. Mostrami `lsblk -f` e dimmi quale disco è l'HD nuovo, con file system, UUID e spazio libero.
-   - Se il file system è ext4, vai avanti.
-   - Se è exFAT, NTFS o FAT, FERMATI e chiedimi se posso formattarlo in ext4 (cancella tutto quello che c'è sull'HD). Non formattare senza il mio sì.
-2. Crea il punto di montaggio /mnt/unclock-hd e aggiungi a /etc/fstab (fai prima una copia: /etc/fstab.bak-unclock):
-   UUID=<uuid dell'HD>  /mnt/unclock-hd  ext4  defaults,nofail,x-systemd.device-timeout=10s  0  2
-   Poi `sudo systemctl daemon-reload && sudo mount -a` e controlla con `findmnt /mnt/unclock-hd`.
-3. sudo mkdir -p /mnt/unclock-hd/media && sudo chown pasquale:pasquale /mnt/unclock-hd/media && chmod 755 /mnt/unclock-hd/media
-   cp -a /home/pasquale/media/. /mnt/unclock-hd/media/
-   Confronta: `ls /home/pasquale/media | wc -l` e `ls /mnt/unclock-hd/media | wc -l` devono dare lo stesso numero.
+```
+Devo spostare la cartella pubblica /home/pasquale/media sull'hard disk Toshiba EXT (sda1, FAT32, UUID 6747-1E19), senza cambiare il suo percorso. NON formattare l'HD e non toccare i file che ci sono già. Caddy (/etc/caddy/Caddyfile), cloudflared e ~/.ssh/authorized_keys NON vanno toccati.
+
+1. Dimmi se qualcosa usa già il percorso "/media/pasquale/TOSHIBA EXT" (script, servizi, collegamenti): dopo questo lavoro l'HD si troverà in /mnt/unclock-hd. Se qualcosa lo usa, FERMATI e chiedimi.
+2. Smonta il montaggio automatico: `udisksctl unmount -b /dev/sda1`.
+   Crea /mnt/unclock-hd e aggiungi a /etc/fstab (prima una copia: /etc/fstab.bak-unclock), con uid e gid presi da `id -u pasquale` e `id -g pasquale`:
+   UUID=6747-1E19  /mnt/unclock-hd  vfat  defaults,nofail,x-systemd.device-timeout=10s,uid=<uid>,gid=<gid>,umask=022,quiet,utf8  0  0
+   Poi `sudo systemctl daemon-reload && sudo mount -a` e controlla con `findmnt /mnt/unclock-hd` e `ls /mnt/unclock-hd` (devono comparire i file di prima).
+3. mkdir /mnt/unclock-hd/unclock-media
+   cp -r --preserve=timestamps /home/pasquale/media/. /mnt/unclock-hd/unclock-media/
+   Confronta: `ls /home/pasquale/media | wc -l` e `ls /mnt/unclock-hd/unclock-media | wc -l` devono dare lo stesso numero.
 4. mv /home/pasquale/media /home/pasquale/media.sd-backup && mkdir /home/pasquale/media && chmod 755 /home/pasquale/media
    Aggiungi a /etc/fstab:
-   /mnt/unclock-hd/media  /home/pasquale/media  none  bind,nofail,x-systemd.requires-mount-for=/mnt/unclock-hd  0  0
-   Poi `sudo systemctl daemon-reload && sudo mount -a` e controlla con `findmnt /home/pasquale/media`.
+   /mnt/unclock-hd/unclock-media  /home/pasquale/media  none  bind,nofail,x-systemd.requires-mount-for=/mnt/unclock-hd  0  0
+   Poi `sudo systemctl daemon-reload && sudo mount -a` e controlla con `findmnt /home/pasquale/media` e `ls -la /home/pasquale/media` (proprietario pasquale, file leggibili da tutti).
 5. Prova: `curl -s https://media.getunclock.app/prova.txt` deve rispondere "ok"; `curl -sI https://media.getunclock.app/<un'immagine che c'è>` deve dare 200.
 6. Riavvia il Pi (`sudo reboot`) e, quando è su, rifai i controlli dei punti 4 e 5.
 7. Dimmi l'esito di ogni punto. Non cancellare /home/pasquale/media.sd-backup: lo tolgo io dopo qualche giorno.

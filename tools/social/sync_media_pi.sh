@@ -27,7 +27,8 @@ if ! nc -z -G 5 "$ip" 22 2>/dev/null; then
     exit 0
 fi
 
-if out=$(/usr/bin/rsync -tp --chmod=u=rw,go=r --itemize-changes "${files[@]}" "$HOST:$DEST" 2>&1); then
+# --modify-window=1: the Pi folder is on a FAT32 disk, which keeps times to 2 seconds.
+if out=$(/usr/bin/rsync -tp --modify-window=1 --chmod=u=rw,go=r --itemize-changes "${files[@]}" "$HOST:$DEST" 2>&1); then
     copied=$(printf '%s\n' "$out" | grep -c '^<f')
     [ "$copied" -gt 0 ] && log "copiati $copied file"
     exit 0
