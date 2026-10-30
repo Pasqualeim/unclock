@@ -229,7 +229,7 @@ Puoi passare questa tabella e i "Dettagli tecnici" a Hermes o a Claude: c'è tut
 
 - 29/10/2026: configurato e provato, funziona.
 - 29/10/2026: copia automatica dal Mac attiva e provata (immagine e video rispondono 200, la radice 404).
-- Da fare: spostare i media sull'HD del Pi (istruzioni per Hermes in "Spostare i media sull'hard disk del Pi").
+- Fatto il 30/10/2026: media spostati sull'HD del Pi (FAT32, non formattato) da Hermes; dopo il riavvio provati dal Mac una copia nuova (`prova-hd.txt`, risponde "ok-hd") e `prova.txt`. Prima del riavvio Caddy non vedeva i file nuovi: dopo uno spostamento del genere il Pi va riavviato. Da fare: tra qualche giorno chiedere a Hermes di togliere `/home/pasquale/media.sd-backup`.
 - Da fare: riavviare il Pi e rifare la prova di `prova.txt` (verifica dell'accensione automatica); prenotare l'IP del Pi sul router.
 
 ---
@@ -238,7 +238,7 @@ Puoi passare questa tabella e i "Dettagli tecnici" a Hermes o a Claude: c'è tut
 
 | Pezzo | Valore |
 |---|---|
-| Cartella pubblica | `/home/pasquale/media` (utente `pasquale`) |
+| Cartella pubblica | `/home/pasquale/media` (utente `pasquale`): dal 30/10/2026 è un bind di `/mnt/unclock-hd/unclock-media`, sull'HD Toshiba EXT (FAT32, UUID `6747-1E19`, montato da `/etc/fstab` con `nofail`; copia del vecchio fstab in `/etc/fstab.bak-unclock`). L'HD è passato da `/media/pasquale/TOSHIBA EXT` a `/mnt/unclock-hd` |
 | Distributore | Caddy, configurazione in `/etc/caddy/Caddyfile`, ascolta solo su `127.0.0.1:8080` |
 | Corridoio | cloudflared 2026.10.6 (repo ufficiale Cloudflare), tunnel `unclock-media`, UUID `1481ffda-ac84-486b-87a0-78313bca8176` |
 | Configurazione del corridoio | `/etc/cloudflared/config.yml` |
