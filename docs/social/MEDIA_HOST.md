@@ -173,6 +173,37 @@ Controllare che `rrsync` esista (serve alla limitazione):
 command -v rrsync    # /usr/bin/rrsync, dal pacchetto rsync
 ```
 
+## Spostare i media sull'hard disk del Pi
+
+Deciso il 30/10/2026, per non riempire la scheda SD dove gira il sistema del Pi: l'HD collegato al Pi ospita **solo i media dei post** (i contenuti generati per i post) (niente backup, niente file privati: tutto quello che c'è nella cartella è pubblico). L'idea: l'HD prende il posto della cartella, il percorso `/home/pasquale/media` resta uguale. Così Caddy, il tunnel, la chiave limitata del Mac e la copia automatica non cambiano.
+
+Come resta il Pi se l'HD è staccato: si accende lo stesso (`nofail`); `/home/pasquale/media` è una cartella vuota sulla SD, i link dei post danno "non trovato" finché l'HD non torna. La copia vecchia sulla SD resta in `/home/pasquale/media.sd-backup` finché la prova non è andata bene.
+
+### Istruzioni da incollare a Hermes
+
+```
+Devo spostare la cartella pubblica /home/pasquale/media sull'hard disk appena collegato al Pi, senza cambiare il suo percorso. Caddy (/etc/caddy/Caddyfile), cloudflared e ~/.ssh/authorized_keys NON vanno toccati.
+
+1. Mostrami `lsblk -f` e dimmi quale disco è l'HD nuovo, con file system, UUID e spazio libero.
+   - Se il file system è ext4, vai avanti.
+   - Se è exFAT, NTFS o FAT, FERMATI e chiedimi se posso formattarlo in ext4 (cancella tutto quello che c'è sull'HD). Non formattare senza il mio sì.
+2. Crea il punto di montaggio /mnt/unclock-hd e aggiungi a /etc/fstab (fai prima una copia: /etc/fstab.bak-unclock):
+   UUID=<uuid dell'HD>  /mnt/unclock-hd  ext4  defaults,nofail,x-systemd.device-timeout=10s  0  2
+   Poi `sudo systemctl daemon-reload && sudo mount -a` e controlla con `findmnt /mnt/unclock-hd`.
+3. sudo mkdir -p /mnt/unclock-hd/media && sudo chown pasquale:pasquale /mnt/unclock-hd/media && chmod 755 /mnt/unclock-hd/media
+   cp -a /home/pasquale/media/. /mnt/unclock-hd/media/
+   Confronta: `ls /home/pasquale/media | wc -l` e `ls /mnt/unclock-hd/media | wc -l` devono dare lo stesso numero.
+4. mv /home/pasquale/media /home/pasquale/media.sd-backup && mkdir /home/pasquale/media && chmod 755 /home/pasquale/media
+   Aggiungi a /etc/fstab:
+   /mnt/unclock-hd/media  /home/pasquale/media  none  bind,nofail,x-systemd.requires-mount-for=/mnt/unclock-hd  0  0
+   Poi `sudo systemctl daemon-reload && sudo mount -a` e controlla con `findmnt /home/pasquale/media`.
+5. Prova: `curl -s https://media.getunclock.app/prova.txt` deve rispondere "ok"; `curl -sI https://media.getunclock.app/<un'immagine che c'è>` deve dare 200.
+6. Riavvia il Pi (`sudo reboot`) e, quando è su, rifai i controlli dei punti 4 e 5.
+7. Dimmi l'esito di ogni punto. Non cancellare /home/pasquale/media.sd-backup: lo tolgo io dopo qualche giorno.
+```
+
+Dopo la prova: un file nuovo da `marketing/images/x/` deve arrivare sull'HD entro un'ora (vedi "Verificare che la copia funzioni"); poi si toglie `media.sd-backup` chiedendolo a Hermes (`rm -r /home/pasquale/media.sd-backup`).
+
 ## Regole
 
 - **Nella cartella solo i media dei post.** Chi conosce il nome esatto di un file lo può aprire. Niente file privati, niente schermate con notifiche vere: solo dati di prova, come nei post.
@@ -197,6 +228,7 @@ Puoi passare questa tabella e i "Dettagli tecnici" a Hermes o a Claude: c'è tut
 
 - 29/10/2026: configurato e provato, funziona.
 - 29/10/2026: copia automatica dal Mac attiva e provata (immagine e video rispondono 200, la radice 404).
+- Da fare: spostare i media sull'HD del Pi (istruzioni per Hermes in "Spostare i media sull'hard disk del Pi").
 - Da fare: riavviare il Pi e rifare la prova di `prova.txt` (verifica dell'accensione automatica); prenotare l'IP del Pi sul router.
 
 ---

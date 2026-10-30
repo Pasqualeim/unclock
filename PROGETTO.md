@@ -74,6 +74,7 @@ In ordine di priorità. Chi: [P] Pasquale, [C] Claude.
 | 3 | Iscrivere Unclock su BetaList (coda gratuita di 2-3 mesi; saltarla costa circa 99-129 $, decide Pasquale); il giorno del lancio chiedere ai tester e su Telegram di commentare la scheda | P | Da fare |
 | 4 | Confermare in Play Console l'approvazione del test chiuso (in revisione dal 22/10) | P | In attesa |
 | 5 | Attivare la notifica email di Netlify Forms per il modulo `signup` | P | Da fare |
+| 5a | Media dei post sull'HD del Pi, per non riempire la SD del sistema: incollare a Hermes le istruzioni di `docs/social/MEDIA_HOST.md` ("Spostare i media sull'hard disk del Pi"), poi dire a Claude l'esito per la verifica | P | Da fare |
 | 6 | Sfoltire i doppioni della Mappa dei fatti, prossimo il CLAUDE.md dell'app (ROADMAP 3, 3a, 3b fatte) | C | In corso |
 | — | Obiettivo di fondo: far provare l'app a più persone possibile prima del Play Store (tappe 12, 100, oltre) | P, C | In corso |
 | — | Ricorrente: a ogni cambio visibile dell'app, rifare screenshot e immagini del sito | C | Sempre |
