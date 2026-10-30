@@ -1,13 +1,13 @@
 # Slack: avvisi e riepiloghi dei post su X e Reddit
 
-Configurato il 29/10/2026. Slack serve solo a una cosa: avvisare Pasquale sul telefono dei post su X (cosa succede) e di quelli Reddit da pubblicare a mano. Mappa di tutti i flussi: `AUTOMAZIONI.md`.
+Configurato il 29/10/2026. Slack è il canale unico per tutto quello che è utile a Pasquale sapere: post su X (cosa succede), post da pubblicare a mano, esito di ogni controllo automatico ed errori (regola del 30/10/2026: ogni nuovo controllo o automazione avvisa qui). Mappa di tutti i flussi: `AUTOMAZIONI.md`.
 
 ## In breve: due tipi di post, due tipi di avviso
 
 - **Post da pubblicare a mano** (Reddit, e domani feddit o altri canali): l'avviso arriva **prima**, la mattina del giorno del post, entro le 9:30. Dice dove e in quale file c'è il testo; Pasquale pubblica quando vuole in giornata.
 - **Post su X pubblicati in automatico** (Buffer, di solito 9-10 dei feriali): niente avviso prima, Pasquale non deve fare niente. Arriva **dopo**: alle 11:30 "uscito" col link (per rispondere ai commenti) o "non uscito" col motivo. In più, il venerdì, l'elenco dei post della settimana dopo e l'anteprima di quella successiva.
 
-Regole di Pasquale (30/10/2026): ogni avviso di cosa pubblicare a mano arriva la mattina, entro le 9:30, mai il pomeriggio; le date dei post non vanno mai sul suo Google Calendar (eventi dei post cancellati il 30/10), solo Slack.
+Regole di Pasquale (30/10/2026): ogni avviso di cosa pubblicare a mano arriva la mattina, entro le 9:30, mai il pomeriggio; i post su X non vanno mai sul suo Google Calendar; i post Reddit da fare a mano sì, come evento alle 9:00 (oltre all'avviso Slack).
 
 ## Cosa arriva e quando
 
@@ -18,7 +18,10 @@ Tutto nel canale privato **#unclock-x**, sempre con la menzione di Pasquale:
 | ✅ **Uscito su X:** inizio del post (ora) link | feriali verso le 11:30, se quel giorno c'era un post | routine cloud |
 | ⚠️ **Post X non uscito:** inizio del post (ora). Motivo | come sopra, se il post è in errore o ancora in coda | routine cloud |
 | ❌ **Controllo post X non riuscito:** errore | come sopra, se la routine non riesce a leggere Buffer | routine cloud |
+| ⚠️ **Media non raggiungibile:** file, post, codice | feriali alle 11:30, se un'immagine o un video dei post dei prossimi 3 giorni non risponde su `media.getunclock.app` (Pi, HD o Cloudflare giù) | routine cloud |
+| ⚠️ **Nessun post su Buffer per la settimana prossima** | venerdì alle 11:30, se la pianificata delle 10 non ha programmato niente (Mac spento o app chiusa) | routine cloud |
 | 📝 **Da pubblicare oggi su Reddit:** comunità e sezione di `marketing/forum/PIANO_REDDIT.md` col testo | alle 9:30 dei giorni con un post Reddit | routine cloud Reddit |
+| ❌ **Copia dei media sul Pi non riuscita:** errore | al primo errore di una serie (non ogni ora), se il Pi è raggiungibile ma la copia fallisce | `tools/social/sync_media_pi.sh` sul Mac |
 | 📅 **Programmati: settimana …** (post della settimana prossima, già su Buffer: testi, prime risposte, immagini) | venerdì dopo le 10 | pianificata del venerdì |
 | 🗓️ **In preparazione: settimana …** (anteprima dei post preparati quel giorno, che verranno programmati il venerdì dopo: c'è una settimana per chiedere modifiche) | venerdì dopo le 10 | pianificata del venerdì |
 

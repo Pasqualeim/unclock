@@ -33,5 +33,13 @@ if out=$(/usr/bin/rsync -tp --modify-window=1 --chmod=u=rw,go=r --itemize-change
     [ "$copied" -gt 0 ] && log "copiati $copied file"
     exit 0
 fi
-log "errore rsync: $(printf '%s' "$out" | tail -1)"
+err="$(printf '%s' "$out" | tail -1)"
+# Slack only on the first failure of a streak, not every hour (docs/social/SLACK.md).
+if ! tail -1 "$LOG" 2>/dev/null | grep -q 'errore rsync'; then
+    msg="<@U0CDER0KVRS> :x: *Copia dei media sul Pi non riuscita:* $err. I post su X con immagini nuove potrebbero uscire senza. Dettagli in ~/Library/Logs/unclock-sync.log"
+    /usr/bin/python3 -c 'import json,sys; print(json.dumps({"text": sys.argv[1]}))' "$msg" |
+        curl -s -m 20 -X POST -H 'Content-type: application/json' --data @- \
+            "$(cat "$HOME/.config/unclock/slack_webhook")" >/dev/null
+fi
+log "errore rsync: $err"
 exit 1
