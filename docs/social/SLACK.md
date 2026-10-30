@@ -1,6 +1,6 @@
-# Slack: avvisi e riepiloghi dei post su X
+# Slack: avvisi e riepiloghi dei post su X e Reddit
 
-Configurato il 29/10/2026. Slack serve solo a una cosa: avvisare Pasquale sul telefono di cosa succede ai post su X. Mappa di tutti i flussi: `AUTOMAZIONI.md`.
+Configurato il 29/10/2026. Slack serve solo a una cosa: avvisare Pasquale sul telefono dei post su X (cosa succede) e di quelli Reddit da pubblicare a mano. Mappa di tutti i flussi: `AUTOMAZIONI.md`.
 
 ## Cosa arriva e quando
 
@@ -11,6 +11,7 @@ Tutto nel canale privato **#unclock-x**, sempre con la menzione di Pasquale:
 | ✅ **Uscito su X:** inizio del post (ora) link | feriali verso le 11:30, se quel giorno c'era un post | routine cloud |
 | ⚠️ **Post X non uscito:** inizio del post (ora). Motivo | come sopra, se il post è in errore o ancora in coda | routine cloud |
 | ❌ **Controllo post X non riuscito:** errore | come sopra, se la routine non riesce a leggere Buffer | routine cloud |
+| 📝 **Oggi su Reddit:** comunità, ora e sezione di `marketing/forum/PIANO_REDDIT.md` col testo | alle 17:30 dei giorni con un post Reddit | routine cloud Reddit |
 | 📅 **Programmati: settimana …** (post della settimana prossima, già su Buffer: testi, prime risposte, immagini) | venerdì dopo le 10 | pianificata del venerdì |
 | 🗓️ **In preparazione: settimana …** (anteprima dei post preparati quel giorno, che verranno programmati il venerdì dopo: c'è una settimana per chiedere modifiche) | venerdì dopo le 10 | pianificata del venerdì |
 
@@ -43,9 +44,10 @@ Due cose scoperte con le prove del 29/10:
 
 Per cambiarlo (se finisce in giro o smette di funzionare): api.slack.com/apps → Unclock avvisi → Incoming Webhooks → "Add New Webhook" sul canale #unclock-x, poi rimuovere quello vecchio; quindi chiedere a Claude di mettere il nuovo indirizzo nel prompt della routine cloud e nel file `~/.config/unclock/slack_webhook`.
 
-## I due mittenti
+## I mittenti
 
 - **Routine cloud "Unclock: avviso post X (cloud)"**: https://claude.ai/code/routines/trig_01LG916LJiVKC3taXJ97s4go. Feriali, cron `30 10 * * 1-5` in UTC = 11:30 italiane (con l'ora legale, da fine marzo, diventa 12:30: va spostata a `30 9 * * 1-5`). Modello Sonnet, strumenti Read e Bash, connettori solo Buffer e Slack. Legge da Buffer (organizzazione `69c8027e89cc374856f05767`, canale `6ae38e932f1f5ed64812678d`) i post di oggi e manda l'avviso con il webhook; se il webhook non risponde "ok", scrive con il connettore (senza notifica). Non tocca Buffer né X. Gira anche col Mac spento. Si cambia dalla pagina della routine o chiedendo a Claude (strumento delle routine).
+- **Routine cloud "Unclock: avviso post Reddit da pubblicare (cloud)"**: https://claude.ai/code/routines/trig_01TPcFPZqj5TXoc8483dvj7L. Creata il 30/10/2026. Ogni giorno, cron `30 16 * * *` in UTC = 17:30 italiane (con l'ora legale diventa 18:30: va spostata a `30 15 * * *`). Modello Sonnet, solo Bash, nessun connettore. Le date dei post Reddit (che Pasquale pubblica a mano) stanno **nel prompt della routine**, perché nel cloud non vede `marketing/`: quando cambia il calendario di `PIANO_REDDIT.md`, Claude aggiorna anche il prompt. Nei giorni fuori lista non manda niente; l'ultimo giorno ricorda di chiedere i post successivi. Le date dei post non vanno mai sul Google Calendar di Pasquale.
 - **Pianificata del venerdì** (`PIANIFICATA_VENERDI.md`): a fine giro lancia due volte `tools/social/slack_week_summary.py <piano> "<titolo>" "<nota>"`, che legge il piano in `marketing/x/` e lo manda con il webhook: i post programmati della settimana prossima e l'anteprima di quelli appena preparati. In fondo al calendario scrive "Riepilogo Slack: <settimana> mandato" e "Anteprima Slack: <settimana> mandata", così non li rimanda. `--check <piano>` legge il piano senza mandare niente.
 
 La prima versione dell'avviso era una pianificata locale (`unclock-avviso-post-x`, feriali 11:15) che scriveva come Pasquale: dipendeva dal Mac e non notificava, cancellata il 30/10 (il suo vecchio prompt resta in `~/.claude/scheduled-tasks/unclock-avviso-post-x/SKILL.md`).
