@@ -35,7 +35,7 @@ Nei giorni senza post non arriva niente. I due messaggi del venerdì sono solo d
 |---|---|
 | Workspace | `pasqualeim` (piano gratuito: messaggi visibili per 90 giorni), id `T0CCVNTBL4X`, solo Pasquale |
 | Pasquale | utente `U0CDER0KVRS` (proprietario e admin); nel profilo il fuso è Europe/Amsterdam, stessa ora di Roma |
-| Canale | **#unclock-x**, privato, id `C0CD989A1K8`; in cima un messaggio che spiega i tipi di avviso |
+| Canale | **#unclock-x**, privato, id `C0CD989A1K8`; un messaggio fissato "Come funziona questo canale" che spiega i tipi di avviso (rifatto il 30/10 con Reddit, media e controlli del venerdì; va aggiornato quando cambia un avviso) e la descrizione del canale |
 | App | **Unclock avvisi**, id `A0CD51K5GH1`, icona: il lucchetto di Unclock (da `docs/store/icon-512.png`); gestione su api.slack.com/apps (accesso con l'account Slack di Pasquale) |
 | Permesso dell'app | uno solo: `incoming-webhook` sul canale #unclock-x. Non legge niente e non vede altri canali |
 | Connettore Slack di claude.ai | per leggere il canale e come strada di riserva; scrive come Pasquale, quindi **senza notifica** |
