@@ -12,7 +12,7 @@ Se un flusso si rompe, basta dire a Claude quale ("non è arrivato l'avviso", "i
 | 2 | Post su X della settimana: programma su Buffer la settimana prossima, prepara quella dopo, manda su Slack i programmati e l'anteprima dei preparati | venerdì alle 10:00 | Mac (pianificata dell'app Claude) | `PIANIFICATA_VENERDI.md` |
 | 3 | Pubblicazione su X | all'ora di ogni post | Buffer (nel cloud) | `PIANIFICATA_VENERDI.md` |
 | 4 | Controlli su Slack: post uscito o no, media dei prossimi 3 giorni raggiungibili, il venerdì post della settimana dopo programmati | feriali alle 11:30 | cloud Anthropic (routine) | `SLACK.md` |
-| 5 | Cose da fare a mano: un promemoria per ogni riga in scadenza della lista Slack "Unclock: da fare a mano", ✅ = fatto | ogni giorno alle 9:30, avvisa solo se c'è qualcosa | cloud Anthropic (routine) | `SLACK.md` |
+| 5 | Cose da fare a mano: un promemoria per ogni riga della lista con Giorno oggi (o passato e non fatta) Slack "Unclock: da fare a mano", ✅ = fatto | ogni giorno alle 9:30, avvisa solo se c'è qualcosa | cloud Anthropic (routine) | `SLACK.md` |
 
 Come si legano: (2) scrive testi e media in `marketing/` → (1) porta i media sul Pi, che li espone su `https://media.getunclock.app/` → (2) programma su Buffer i post con quei link → (3) Buffer pubblica e scarica il media dal Pi all'ora del post → (4) controlla Buffer e avvisa su Slack.
 
@@ -60,7 +60,7 @@ Nessun segreto sta nel repo.
 | ⚠️ "Media non raggiungibile" su Slack | 1, 4 | Pi acceso? HD montato? `cloudflared` attivo? `MEDIA_HOST.md` |
 | ⚠️ "Nessun post su Buffer per la settimana prossima" | 2 | Apri l'app Claude e lancia la pianificata da Pianificate; `PIANIFICATA_VENERDI.md` |
 | Media nuovi non sul Pi | 1 | `~/Library/Logs/unclock-sync.log`; `MEDIA_HOST.md` |
-| Nessun promemoria alle 9:30 per una cosa in scadenza | 5 | La riga ha Scadenza e Fatto non spuntato? Ultima esecuzione della routine; `SLACK.md` |
+| Nessun promemoria alle 9:30 per una cosa in scadenza | 5 | La riga ha Giorno e Fatto non spuntato? Ultima esecuzione della routine; `SLACK.md` |
 | Due post nello stesso giorno | 2 | `marketing/x/CALENDARIO.md` contro Buffer; `PIANIFICATA_VENERDI.md` |
 
 ## Da ricordare
