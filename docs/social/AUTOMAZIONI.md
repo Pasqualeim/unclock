@@ -58,6 +58,7 @@ Nessun segreto sta nel repo.
 | Avviso nel canale ma niente notifica sul telefono | 4 | Pausa notifiche e pianificazione notifiche di Slack; `SLACK.md` |
 | Venerdì nessun messaggio Slack né post nuovi | 2 | L'app Claude era aperta? Pagina Pianificate → ultima esecuzione; `PIANIFICATA_VENERDI.md` |
 | Media nuovi non sul Pi | 1 | `~/Library/Logs/unclock-sync.log`; `MEDIA_HOST.md` |
+| Nessun promemoria Reddit alle 9:30 in un giorno di post | 5 | La data è nel prompt della routine Reddit? Ultima esecuzione; `SLACK.md` |
 | Due post nello stesso giorno | 2 | `marketing/x/CALENDARIO.md` contro Buffer; `PIANIFICATA_VENERDI.md` |
 
 ## Da ricordare

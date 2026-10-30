@@ -2,6 +2,13 @@
 
 Configurato il 29/10/2026. Slack serve solo a una cosa: avvisare Pasquale sul telefono dei post su X (cosa succede) e di quelli Reddit da pubblicare a mano. Mappa di tutti i flussi: `AUTOMAZIONI.md`.
 
+## In breve: due tipi di post, due tipi di avviso
+
+- **Post da pubblicare a mano** (Reddit, e domani feddit o altri canali): l'avviso arriva **prima**, la mattina del giorno del post, entro le 9:30. Dice dove e in quale file c'è il testo; Pasquale pubblica quando vuole in giornata.
+- **Post su X pubblicati in automatico** (Buffer, di solito 9-10 dei feriali): niente avviso prima, Pasquale non deve fare niente. Arriva **dopo**: alle 11:30 "uscito" col link (per rispondere ai commenti) o "non uscito" col motivo. In più, il venerdì, l'elenco dei post della settimana dopo e l'anteprima di quella successiva.
+
+Regole di Pasquale (30/10/2026): ogni avviso di cosa pubblicare a mano arriva la mattina, entro le 9:30, mai il pomeriggio; le date dei post non vanno mai sul suo Google Calendar (eventi dei post cancellati il 30/10), solo Slack.
+
 ## Cosa arriva e quando
 
 Tutto nel canale privato **#unclock-x**, sempre con la menzione di Pasquale:

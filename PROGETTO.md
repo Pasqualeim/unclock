@@ -59,6 +59,7 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 - 2026-10-29: i post su X li prepara e li programma Claude da solo, ogni venerdì (pianificata in `docs/social/PIANIFICATA_VENERDI.md`), senza revisione di Pasquale, per almeno due mesi. Media su `media.getunclock.app` dal Raspberry Pi, copiati dal Mac ogni ora.
 - 2026-10-28: X si concentra sugli orari che danno più diffusione, non su quando il pubblico stacca: mattine dei feriali 9-11 (ora italiana), mai sera o weekend; dopo i post Pasquale risponde quando può (il 29/10 tolto l'obbligo dei 30-45 minuti online). Dopo 3 settimane decidono le statistiche di X del profilo. Piano della settimana 1 riprogrammato.
 - Niente pubblicazioni (deploy, push, post, mail, Play Console) senza ok di Pasquale.
+- 2026-10-30: avvisi solo su Slack, mai eventi sul Google Calendar (cancellati quelli dei post). Due tipi: per i post da pubblicare a mano (Reddit) l'avviso arriva la mattina del giorno, entro le 9:30 (routine cloud, date nel suo prompt); per i post X automatici arriva dopo (11:30 uscito/non uscito, venerdì riepilogo). Spiegazione in `docs/social/SLACK.md`, "In breve".
 
 ## Task
 
