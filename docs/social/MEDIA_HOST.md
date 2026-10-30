@@ -208,7 +208,7 @@ Dopo la prova: un file nuovo da `marketing/images/x/` deve arrivare sull'HD entr
 ## Regole
 
 - **Nella cartella solo i media dei post.** Chi conosce il nome esatto di un file lo può aprire. Niente file privati, niente schermate con notifiche vere: solo dati di prova, come nei post.
-- **Tieni il Pi acceso** finché i post programmati non sono usciti: non è ancora verificato se Buffer si salva una copia del file subito o lo riscarica all'ora di pubblicazione.
+- **Tieni il Pi acceso e l'HD collegato** (dal 30/10 i media stanno sull'HD) finché i post programmati non sono usciti: non è ancora verificato se Buffer si salva una copia del file subito o lo riscarica all'ora di pubblicazione.
 - Il sotto-nome `media` non raccoglie dati di nessuno: l'informativa privacy del sito non cambia.
 
 ## Se smette di funzionare
