@@ -7,7 +7,7 @@ Configurato il 29/10/2026. Slack è il canale unico per tutto quello che è util
 - **Post da pubblicare a mano** (Reddit, e domani feddit o altri canali): l'avviso arriva **prima**, la mattina del giorno del post, entro le 9:30. Dice dove e in quale file c'è il testo; Pasquale pubblica quando vuole in giornata.
 - **Post su X pubblicati in automatico** (Buffer, di solito 9-10 dei feriali): niente avviso prima, Pasquale non deve fare niente. Arriva **dopo**: alle 11:30 "uscito" col link (per rispondere ai commenti) o "non uscito" col motivo. In più, il venerdì, l'elenco dei post della settimana dopo e l'anteprima di quella successiva.
 
-Regole di Pasquale (30/10/2026): ogni avviso di cosa pubblicare a mano arriva la mattina, entro le 9:30, mai il pomeriggio; i post su X non vanno mai sul suo Google Calendar; i post Reddit da fare a mano sì, come evento alle 9:00 (oltre all'avviso Slack).
+Regole di Pasquale (30/10/2026): ogni avviso di cosa pubblicare a mano arriva la mattina, entro le 9:30, mai il pomeriggio; nessun post va sul suo Google Calendar, nemmeno quelli Reddit da fare a mano: basta Slack (il calendario resta per le cose personali; eventi Reddit cancellati la sera del 30/10).
 
 ## Cosa arriva e quando
 
