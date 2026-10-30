@@ -19,7 +19,7 @@ In ogni giro, nell'ordine:
 2. Programma su Buffer i post pronti della settimana prossima (`customScheduled`, data e ora del calendario), con il media da `https://media.getunclock.app/<nome>` e la prima risposta col link come secondo post del thread.
 3. Scrive i post della settimana dopo in `marketing/x/AAAA-MM-GG_settimana-N.md` (3-4 post, mattine dei feriali 9-11, link sempre nella prima risposta), testi passati da humanizer.
 4. Crea immagini e video in `marketing/images/x/` e `marketing/video/x/`, con la **data di uscita** davanti al nome, e li manda sul Raspberry Pi (`docs/social/MEDIA_HOST.md`) controllando che rispondano 200.
-5. Manda in #unclock-x su Slack (app "Unclock avvisi", con la menzione di Pasquale) un **riepilogo** dei post appena programmati: giorno, ora, testo, prima risposta, immagine (o link al video). Serve a Pasquale per una revisione veloce dal telefono, senza aprire Buffer; non c'è niente da approvare.
+5. Manda in #unclock-x su Slack due messaggi (`tools/social/slack_week_summary.py`, dettagli in `SLACK.md`): i post **programmati** della settimana prossima e l'**anteprima** di quelli appena preparati, con giorno, ora, testo, prima risposta e immagine. Servono a Pasquale per una revisione veloce dal telefono; l'anteprima gli lascia una settimana per chiedere modifiche prima che i post vadano su Buffer.
 6. Aggiorna calendario e tabella Task di `PROGETTO.md`, scrive un resoconto breve in italiano.
 
 ## Perché sul Mac e non nel cloud

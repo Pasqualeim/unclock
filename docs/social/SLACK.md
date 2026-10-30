@@ -11,9 +11,10 @@ Tutto nel canale privato **#unclock-x**, sempre con la menzione di Pasquale:
 | ✅ **Uscito su X:** inizio del post (ora) link | feriali verso le 11:30, se quel giorno c'era un post | routine cloud |
 | ⚠️ **Post X non uscito:** inizio del post (ora). Motivo | come sopra, se il post è in errore o ancora in coda | routine cloud |
 | ❌ **Controllo post X non riuscito:** errore | come sopra, se la routine non riesce a leggere Buffer | routine cloud |
-| 📅 **Post su X: settimana …** (riepilogo con testi, prime risposte, immagini) | venerdì dopo le 10, una volta per settimana | pianificata del venerdì |
+| 📅 **Programmati: settimana …** (post della settimana prossima, già su Buffer: testi, prime risposte, immagini) | venerdì dopo le 10 | pianificata del venerdì |
+| 🗓️ **In preparazione: settimana …** (anteprima dei post preparati quel giorno, che verranno programmati il venerdì dopo: c'è una settimana per chiedere modifiche) | venerdì dopo le 10 | pianificata del venerdì |
 
-Nei giorni senza post non arriva niente. Il riepilogo è solo da guardare: non c'è niente da approvare. Se qualcosa non va, Pasquale lo dice a Claude in una sessione del progetto.
+Nei giorni senza post non arriva niente. I due messaggi del venerdì sono solo da guardare: non c'è niente da approvare. Se qualcosa non va, Pasquale lo dice a Claude in una sessione del progetto.
 
 **Scrivere in #unclock-x non serve:** l'app sa solo mandare messaggi, nessuno legge il canale in automatico. Claude lo legge (connettore Slack) solo quando glielo si chiede. In futuro si può aggiungere Claude dentro Slack, ma quel Claude girerebbe nel cloud: vede Buffer e Slack, non il Mac né il Pi.
 
@@ -38,16 +39,16 @@ Due cose scoperte con le prove del 29/10:
 
 ### L'indirizzo del webhook
 
-È un link `https://hooks.slack.com/services/T0CCVNTBL4X/B0CCVSVCZV5/...`: chi lo conosce può scrivere in #unclock-x (solo lì). È **segreto**: sta solo nel prompt della routine cloud e in quello della pianificata del venerdì, mai nel repo né nei documenti.
+È un link `https://hooks.slack.com/services/T0CCVNTBL4X/B0CCVSVCZV5/...`: chi lo conosce può scrivere in #unclock-x (solo lì). È **segreto**: sta solo nel prompt della routine cloud e nel file `~/.config/unclock/slack_webhook` del Mac (permessi 600), letto da `tools/social/slack_week_summary.py`; mai nel repo né nei documenti.
 
-Per cambiarlo (se finisce in giro o smette di funzionare): api.slack.com/apps → Unclock avvisi → Incoming Webhooks → "Add New Webhook" sul canale #unclock-x, poi rimuovere quello vecchio; quindi chiedere a Claude di mettere il nuovo indirizzo nei due prompt.
+Per cambiarlo (se finisce in giro o smette di funzionare): api.slack.com/apps → Unclock avvisi → Incoming Webhooks → "Add New Webhook" sul canale #unclock-x, poi rimuovere quello vecchio; quindi chiedere a Claude di mettere il nuovo indirizzo nel prompt della routine cloud e nel file `~/.config/unclock/slack_webhook`.
 
 ## I due mittenti
 
 - **Routine cloud "Unclock: avviso post X (cloud)"**: https://claude.ai/code/routines/trig_01LG916LJiVKC3taXJ97s4go. Feriali, cron `30 10 * * 1-5` in UTC = 11:30 italiane (con l'ora legale, da fine marzo, diventa 12:30: va spostata a `30 9 * * 1-5`). Modello Sonnet, strumenti Read e Bash, connettori solo Buffer e Slack. Legge da Buffer (organizzazione `69c8027e89cc374856f05767`, canale `6ae38e932f1f5ed64812678d`) i post di oggi e manda l'avviso con il webhook; se il webhook non risponde "ok", scrive con il connettore (senza notifica). Non tocca Buffer né X. Gira anche col Mac spento. Si cambia dalla pagina della routine o chiedendo a Claude (strumento delle routine).
-- **Pianificata del venerdì** (`PIANIFICATA_VENERDI.md`): a fine giro manda il riepilogo della settimana prossima con il webhook e scrive in fondo al calendario "Riepilogo Slack: <settimana> mandato", così non lo rimanda.
+- **Pianificata del venerdì** (`PIANIFICATA_VENERDI.md`): a fine giro lancia due volte `tools/social/slack_week_summary.py <piano> "<titolo>" "<nota>"`, che legge il piano in `marketing/x/` e lo manda con il webhook: i post programmati della settimana prossima e l'anteprima di quelli appena preparati. In fondo al calendario scrive "Riepilogo Slack: <settimana> mandato" e "Anteprima Slack: <settimana> mandata", così non li rimanda. `--check <piano>` legge il piano senza mandare niente.
 
-La prima versione dell'avviso era una pianificata locale (`unclock-avviso-post-x`, feriali 11:15) che scriveva come Pasquale: è **spenta** (dipendeva dal Mac e non notificava). Si può cancellare dalla pagina Pianificate.
+La prima versione dell'avviso era una pianificata locale (`unclock-avviso-post-x`, feriali 11:15) che scriveva come Pasquale: dipendeva dal Mac e non notificava, cancellata il 30/10 (il suo vecchio prompt resta in `~/.claude/scheduled-tasks/unclock-avviso-post-x/SKILL.md`).
 
 ## Se non arriva la notifica
 

@@ -9,7 +9,7 @@ Se un flusso si rompe, basta dire a Claude quale ("non è arrivato l'avviso", "i
 | # | Flusso | Quando | Dove gira | Documento |
 |---|---|---|---|---|
 | 1 | Copia dei media dal Mac al Raspberry Pi | ogni ora e all'accensione del Mac | Mac (LaunchAgent) | `MEDIA_HOST.md` |
-| 2 | Post su X della settimana: programma su Buffer la settimana prossima, prepara quella dopo, manda il riepilogo su Slack | venerdì alle 10:00 | Mac (pianificata dell'app Claude) | `PIANIFICATA_VENERDI.md` |
+| 2 | Post su X della settimana: programma su Buffer la settimana prossima, prepara quella dopo, manda su Slack i programmati e l'anteprima dei preparati | venerdì alle 10:00 | Mac (pianificata dell'app Claude) | `PIANIFICATA_VENERDI.md` |
 | 3 | Pubblicazione su X | all'ora di ogni post | Buffer (nel cloud) | `PIANIFICATA_VENERDI.md` |
 | 4 | Avviso su Slack: post uscito o no | feriali alle 11:30 | cloud Anthropic (routine) | `SLACK.md` |
 
@@ -27,7 +27,8 @@ Cosa deve restare acceso: il **Pi** sempre (Buffer prende i media da lì all'ora
 | Chiave SSH e alias del Pi | `~/.ssh/unclock_pi`, blocco `unclock-pi` in `~/.ssh/config` (Pi `192.168.1.33`) | no |
 | Cartella pubblica sul Pi | `/home/pasquale/media` → `https://media.getunclock.app/<nome>` | no |
 | Prompt della pianificata del venerdì | `~/.claude/scheduled-tasks/unclock-post-x-settimana/SKILL.md` (pagina Pianificate dell'app) | no |
-| Pianificata locale dell'avviso (spenta) | `~/.claude/scheduled-tasks/unclock-avviso-post-x/SKILL.md` | no |
+| Script dei messaggi Slack del venerdì | `tools/social/slack_week_summary.py` | sì |
+| Indirizzo del webhook Slack (segreto) | `~/.config/unclock/slack_webhook` | no |
 | Routine cloud dell'avviso | https://claude.ai/code/routines/trig_01LG916LJiVKC3taXJ97s4go | no |
 | Calendario dei post | `marketing/x/CALENDARIO.md` | no (`marketing/` è git-ignored) |
 | Piani e testi | `marketing/x/AAAA-MM-GG_settimana-N.md` | no |
@@ -43,7 +44,7 @@ Cosa deve restare acceso: il **Pi** sempre (Buffer prende i media da lì all'ora
 Nessun segreto sta nel repo.
 
 - **Chiave SSH del Pi:** solo sul Mac (`~/.ssh/unclock_pi`); sul Pi è limitata a scrivere con rsync dentro `media` (`MEDIA_HOST.md`).
-- **Indirizzo del webhook Slack:** solo nei due prompt (routine cloud e pianificata del venerdì). Come cambiarlo: `SLACK.md`.
+- **Indirizzo del webhook Slack:** nel prompt della routine cloud e in `~/.config/unclock/slack_webhook` sul Mac. Come cambiarlo: `SLACK.md`.
 - **Accessi a Buffer e Slack:** sono i connettori di claude.ai, legati all'account di Pasquale.
 
 ## Se qualcosa non va: da dove partire
@@ -54,7 +55,7 @@ Nessun segreto sta nel repo.
 | Post uscito senza immagine | 1, 3 | `https://media.getunclock.app/<nome>` risponde 200? Pi acceso? `MEDIA_HOST.md` |
 | Nessun avviso su Slack in un giorno con post | 4 | Ultima esecuzione della routine cloud; `SLACK.md` |
 | Avviso nel canale ma niente notifica sul telefono | 4 | Pausa notifiche e pianificazione notifiche di Slack; `SLACK.md` |
-| Venerdì nessun riepilogo né post nuovi | 2 | L'app Claude era aperta? Pagina Pianificate → ultima esecuzione; `PIANIFICATA_VENERDI.md` |
+| Venerdì nessun messaggio Slack né post nuovi | 2 | L'app Claude era aperta? Pagina Pianificate → ultima esecuzione; `PIANIFICATA_VENERDI.md` |
 | Media nuovi non sul Pi | 1 | `~/Library/Logs/unclock-sync.log`; `MEDIA_HOST.md` |
 | Due post nello stesso giorno | 2 | `marketing/x/CALENDARIO.md` contro Buffer; `PIANIFICATA_VENERDI.md` |
 
