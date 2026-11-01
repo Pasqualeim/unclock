@@ -13,7 +13,7 @@ Read first, only these: `PROGETTO.md` (Task table, decisions), `docs/IDEA.md` (t
 
 - Unclock: Android app. You tell it when you work (default Mon-Fri 9-18) and which are your work apps; outside work their notifications are paused on their own, no timer to start. Extra breaks (lunch), days off, Italian holidays, "Pause now", widget, Quick Settings tile, a lake scene that follows the real light of the day, stats that count the free time you got back (sleep not counted).
 - No internet permission (manifest has none), no account, nothing leaves the phone.
-- In closed test on Google Play. Sign-up: `getunclock.app/it/prova` (IT), `getunclock.app/en/try` (EN): one Gmail field, an email with two steps, then install from Play. Telegram channel for updates.
+- In closed test on Google Play. Sign-up: `getunclock.app/it/prova` (IT), `getunclock.app/en/try` (EN): one Gmail field, an email with two steps, then install from Play. No Telegram channel (dropped 2026-11-01): updates go on X, and the site links to x.com/Pasquale_im.
 - The question behind it: apps reward the hours you focus and work, nothing exists for the time after.
 - First X post (27/10/2026): the promo video, link in the first reply, pinned.
 
@@ -43,6 +43,7 @@ Read first, only these: `PROGETTO.md` (Task table, decisions), `docs/IDEA.md` (t
 
 - Drafts: `marketing/x/<YYYY-MM-DD>_<slug>.md`, one file per week plan, each post with: day and time, text (ready to paste), first reply if any, media file path, why it should work in one line.
 - Media: `marketing/images/x/` (1600x900 or 1080x1350 PNG) and `marketing/video/x/` (H.264 MP4, ≤ 45 s, with music from promo_music.py when the video is longer than 8 s). Check every image you make by looking at it (Read the PNG) before you report it: no cut text, no overlap, readable on a phone.
+- Posts not yet out must show the current app and site. When the brief says something visible changed, find every `pianificato`/`programmato` row in `marketing/x/CALENDARIO.md` and every draft in `marketing/forum/` whose media or text show the old version, redo them (same file name, so the calendar and Buffer paths stay valid) and list them in the report. Take app pictures from the current site images or a fresh screenshot, never from an older post.
 - `marketing/` is git-ignored: never commit, never push, never publish, never post anything anywhere.
 
 ## Report (short, Italian)
