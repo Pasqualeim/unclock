@@ -58,6 +58,7 @@ Nessun segreto sta nel repo.
 | Avviso nel canale ma niente notifica sul telefono | 4 | Pausa notifiche e pianificazione notifiche di Slack; `SLACK.md` |
 | Venerdì nessun messaggio Slack né post nuovi | 2 | L'app Claude era aperta? Pagina Pianificate → ultima esecuzione; `PIANIFICATA_VENERDI.md` |
 | ⚠️ "Media non raggiungibile" su Slack | 1, 4 | Pi acceso? HD montato? `cloudflared` attivo? `MEDIA_HOST.md` |
+| Avvisi cloud "Inviato usando Claude" senza notifica, o "controllo media non riuscito: 403 sul tunnel" | 4, 5 | La rete dell'ambiente cloud delle routine (`env_01DHDyxqERphDCMAC8bacMSD`) blocca `hooks.slack.com` e `media.getunclock.app` (`CONNECT tunnel failed, response 403`, visto il 2/11). Le routine ripiegano sul connettore, che scrive come Pasquale: niente notifica. Rimedio: claude.ai/code > impostazioni dell'ambiente > rete personalizzata con quei due domini (lo fa Pasquale, riga nella lista Slack). Prima di dare la colpa al Pi, prova `curl -r 0-0` dal Mac. |
 | ⚠️ "Nessun post su Buffer per la settimana prossima" | 2 | Apri l'app Claude e lancia la pianificata da Pianificate; `PIANIFICATA_VENERDI.md` |
 | Media nuovi non sul Pi | 1 | `~/Library/Logs/unclock-sync.log`; `MEDIA_HOST.md` |
 | Nessun promemoria alle 9:30 per una cosa in scadenza | 5 | La riga ha Giorno e Fatto non spuntato? Ultima esecuzione della routine; `SLACK.md` |
