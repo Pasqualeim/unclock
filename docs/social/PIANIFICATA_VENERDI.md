@@ -17,7 +17,7 @@ In ogni giro, nell'ordine:
 
 1. Legge il calendario `marketing/x/CALENDARIO.md`, aggiorna gli stati da Buffer (uscito, errore) e riprogramma i post saltati.
 2. Programma su Buffer i post pronti della settimana prossima (`customScheduled`, data e ora del calendario), con il media da `https://media.getunclock.app/<nome>` e la prima risposta col link come secondo post del thread.
-3. Scrive i post della settimana dopo in `marketing/x/AAAA-MM-GG_settimana-N.md` (3-4 post, mattine dei feriali 9-11, link sempre nella prima risposta), testi passati da humanizer.
+3. Scrive i post della settimana dopo in `marketing/x/AAAA-MM-GG_settimana-N.md` (2 post: martedì 10:00 e giovedì 9:30, link sempre nella prima risposta), testi passati da humanizer.
 4. Crea immagini e video in `marketing/images/x/` e `marketing/video/x/`, con la **data di uscita** davanti al nome, e li manda sul Raspberry Pi (`docs/social/MEDIA_HOST.md`) controllando che rispondano 200.
 5. Manda in #unclock-x su Slack due messaggi (`tools/social/slack_week_summary.py`, dettagli in `SLACK.md`): i post **programmati** della settimana prossima e l'**anteprima** di quelli appena preparati, con giorno, ora, testo, prima risposta e immagine. Servono a Pasquale per una revisione veloce dal telefono; l'anteprima gli lascia una settimana per chiedere modifiche prima che i post vadano su Buffer.
 6. Aggiorna calendario e tabella Task di `PROGETTO.md`, scrive un resoconto breve in italiano.
@@ -36,12 +36,12 @@ Tutto parte da un **calendario unico**, `marketing/x/CALENDARIO.md` (non in git,
 
 Regole a ogni giro, anche se un venerdì salta o la pianificata parte due volte:
 
-- un post per giorno feriale al massimo, 4 a settimana (lun-ven), ore 9-11;
+- 2 post a settimana, martedì alle 10:00 e giovedì alle 9:30 (deciso il 6/11/2026: meno post più curati, più tempo per rispondere e commentare, metà del lavoro a ogni giro);
 - prima di programmare controlla Buffer e il calendario: se il post c'è già, non lo ricrea;
 - un post non uscito con la data passata (o in errore su Buffer) va al primo giorno feriale libero da domani in poi, modificando il post Buffer esistente, mai creandone un altro;
 - i post nuovi vanno solo dopo l'ultimo post già nel calendario, mai a riempire buchi prima;
 - mai preparare oltre la settimana dopo la prossima; un venerdì saltato si recupera al giro dopo (prepara e programma la settimana che manca);
-- al massimo 10 post programmati su Buffer (piano gratuito); con 3-4 a settimana se ne usano 3-4;
+- al massimo 10 post programmati su Buffer (piano gratuito); con 2 a settimana se ne usano 2-4;
 - i post usciti non si toccano.
 
 ## Regole sui contenuti

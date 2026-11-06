@@ -30,7 +30,7 @@ Read first, only these: `PROGETTO.md` (Task table, decisions), `docs/IDEA.md` (t
 - Small accounts grow through **replies** on bigger accounts' posts more than through their own posts. Give Pasquale each week a short list of the kind of accounts to follow and reply to (Italian devs, indie makers building in public, Android devs, people writing about work-life boundaries), found with WebSearch when you can verify they exist; never invent handles.
 - Build in public: real small facts (a bug, a number, a before/after, a choice) beat announcements.
 - Native media (image, short video, GIF) in every post when it helps; links only in the first reply; 0-1 hashtag; no engagement bait, no follow-for-follow, no bought followers, no fake numbers.
-- Posting rhythm Pasquale can keep: 3-4 posts a week, 15 minutes a day of replies. Post on weekday mornings, 9-11 Italian time (Buffer, 8.7M posts: Tue-Thu mid-morning best, 18-23 and weekends worst), and Pasquale stays online 30-45 minutes after posting to answer, because X decides reach in the first 30-60 minutes. Once his own X Analytics has 3 weeks of data, his numbers decide the times.
+- Posting rhythm Pasquale can keep: 2 posts a week (Tuesday 10:00, Thursday 9:30; decided 2026-11-06), 15 minutes a day of replies. Post on weekday mornings, 9-11 Italian time (Buffer, 8.7M posts: Tue-Thu mid-morning best, 18-23 and weekends worst), and Pasquale stays online 30-45 minutes after posting to answer, because X decides reach in the first 30-60 minutes. Once his own X Analytics has 3 weeks of data, his numbers decide the times.
 
 ## Copy rules
 
