@@ -12,7 +12,7 @@ Se un flusso si rompe, basta dire a Claude quale ("non è arrivato l'avviso", "i
 | 2 | Post su X della settimana: programma su Buffer la settimana prossima, prepara quella dopo, manda su Slack i programmati e l'anteprima dei preparati | venerdì alle 10:00 | Mac (pianificata dell'app Claude) | `PIANIFICATA_VENERDI.md` |
 | 3 | Pubblicazione su X | all'ora di ogni post | Buffer (nel cloud) | `PIANIFICATA_VENERDI.md` |
 | 4 | Controlli su Slack: post uscito o no, media dei prossimi 3 giorni raggiungibili, il venerdì post della settimana dopo programmati | feriali alle 11:30 | cloud Anthropic (routine) | `SLACK.md` |
-| 5 | Cose da fare a mano: un promemoria per ogni riga della lista con Giorno oggi (o passato e non fatta) Slack "Unclock: da fare a mano", ✅ = fatto | ogni giorno alle 9:30, avvisa solo se c'è qualcosa | cloud Anthropic (routine) | `SLACK.md` |
+| 5 | Cose da fare a mano: un promemoria per ogni riga della lista Slack "Unclock: da fare a mano" con Giorno oggi, un solo sollecito ⏰ il giorno dopo se non è fatta, ✅ = fatto | ogni giorno verso le 9:30, avvisa solo se c'è qualcosa | cloud Anthropic (routine) | `SLACK.md` |
 
 Come si legano: (2) scrive testi e media in `marketing/` → (1) porta i media sul Pi, che li espone su `https://media.getunclock.app/` → (2) programma su Buffer i post con quei link → (3) Buffer pubblica e scarica il media dal Pi all'ora del post → (4) controlla Buffer e avvisa su Slack.
 
@@ -69,3 +69,7 @@ Nessun segreto sta nel repo.
 - **Ora legale (fine marzo 2027):** la routine cloud è in UTC (`30 10 * * 1-5`), quindi passerà alle 12:30 italiane; va spostata a `30 9 * * 1-5`. La pianificata del venerdì usa l'ora locale e non cambia.
 - **Fine dicembre 2026:** rivedere com'è andata (la decisione del 29/10 era "almeno un paio di mesi").
 - **IP del Pi:** conviene prenotarlo sul router Vodafone (`MEDIA_HOST.md`).
+
+## Controllo del 7/11/2026
+
+Attive: pianificata del venerdì sul Mac (`unclock-post-x-settimana`), routine cloud delle 11:30 (post X) e delle 9:30 (cose a mano), LaunchAgent della copia media. Tolta la cartella orfana `~/.claude/scheduled-tasks/unclock-avviso-post-x` (vecchia versione locale dell'avviso, spostata nel Cestino). Corretti: solleciti ripetuti ogni giorno, promemoria che arrivava alle 9:41. Da fare il 29/3/2027: orari delle routine cloud per l'ora legale (riga nella lista Slack).
