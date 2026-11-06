@@ -63,6 +63,7 @@ Riepilogo del venerdì e avvisi dei post: `SLACK.md`. Mappa di tutti i flussi: `
 
 | Cosa vedi | Cosa vuol dire | Cosa fare |
 |---|---|---|
+| Su Slack ":x: Pianificata post X: giro incompleto" | Un passo del giro non è riuscito (dal 6/11 la pianificata avvisa invece di scriverlo solo nel resoconto). Il 6/11: `create_post` rifiutato dal controllo permessi della modalità Auto e Mac in stop a metà giro | Chiedi a Claude: rifà a mano i passi elencati. Il Mac non deve andare in stop il venerdì mattina |
 | Venerdì nessun resoconto | Mac spento o app chiusa all'ora della pianificata | Riapri l'app (parte da sola) o lanciala a mano da Pianificate |
 | Un post su Buffer senza immagine o in errore | Il media non era sul Pi o il Pi era spento all'ora di uscita | `~/Library/Logs/unclock-sync.log` e la tabella dei problemi in `MEDIA_HOST.md`; il venerdì dopo la pianificata lo riprogramma da sola |
 | Il resoconto dice "Pi non raggiungibile" | Pi spento, IP cambiato, o la pianificata gira senza rete di casa | Tabella dei problemi in `MEDIA_HOST.md` |
