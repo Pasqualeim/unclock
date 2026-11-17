@@ -36,6 +36,7 @@ Tutto parte da un **calendario unico**, `marketing/x/CALENDARIO.md` (non in git,
 
 Regole a ogni giro, anche se un venerdì salta o la pianificata parte due volte:
 
+- post sul sito: al massimo uno al mese, dentro i 2 a settimana, prenotati nel calendario come righe "da preparare" con il brief in `marketing/x/POST_SITO.md` (deciso il 17/11/2026: 1/12 la nuova home, 15/12 Prova l'orario; poi solo quando il sito cambia);
 - 2 post a settimana, martedì alle 10:00 e giovedì alle 9:30 (deciso il 6/11/2026: meno post più curati, più tempo per rispondere e commentare, metà del lavoro a ogni giro);
 - prima di programmare controlla Buffer e il calendario: se il post c'è già, non lo ricrea;
 - un post non uscito con la data passata (o in errore su Buffer) va al primo giorno feriale libero da domani in poi, modificando il post Buffer esistente, mai creandone un altro;
