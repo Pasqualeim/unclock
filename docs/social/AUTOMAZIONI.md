@@ -11,7 +11,7 @@ Se un flusso si rompe, basta dire a Claude quale ("non è arrivato l'avviso", "i
 | 1 | Copia dei media dal Mac al Raspberry Pi | ogni ora e all'accensione del Mac | Mac (LaunchAgent); se fallisce avvisa su Slack | `MEDIA_HOST.md` |
 | 2 | Post su X della settimana: programma su Buffer la settimana prossima, prepara quella dopo, manda su Slack i programmati e l'anteprima dei preparati | venerdì alle 10:00 | Mac (pianificata dell'app Claude) | `PIANIFICATA_VENERDI.md` |
 | 3 | Pubblicazione su X | all'ora di ogni post | Buffer (nel cloud) | `PIANIFICATA_VENERDI.md` |
-| 4 | Controlli su Slack: post uscito o no, media dei prossimi 3 giorni raggiungibili, il venerdì post della settimana dopo programmati | feriali alle 11:30 | cloud Anthropic (routine) | `SLACK.md` |
+| 4 | Controlli su Slack: post uscito o no, media dei prossimi 3 giorni raggiungibili, il lunedì post della settimana su Buffer (dal 20/11: il venerdì la pianificata gira fino al primo pomeriggio e il controllo delle 11:30 arrivava prima) | feriali alle 11:30 | cloud Anthropic (routine) | `SLACK.md` |
 | 5 | Cose da fare a mano: un promemoria per ogni riga della lista Slack "Unclock: da fare a mano" con Giorno oggi, un solo sollecito ⏰ il giorno dopo se non è fatta, ✅ = fatto | ogni giorno verso le 9:30, avvisa solo se c'è qualcosa | cloud Anthropic (routine) | `SLACK.md` |
 
 Come si legano: (2) scrive testi e media in `marketing/` → (1) porta i media sul Pi, che li espone su `https://media.getunclock.app/` → (2) programma su Buffer i post con quei link → (3) Buffer pubblica e scarica il media dal Pi all'ora del post → (4) controlla Buffer e avvisa su Slack.
