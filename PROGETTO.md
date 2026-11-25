@@ -63,6 +63,7 @@ Ogni argomento ha un solo file padrone: lì il fatto è scritto per intero e agg
 - 2026-10-30: ogni cosa da fare a mano per Pasquale va come riga nella lista Slack "Unclock: da fare a mano" (https://pasqualeim.slack.com/lists/T0CCVNTBL4X/F0CEJHCR4DN), scritta in modo che basti da sola; mai eventi in calendario. La tabella qui sotto resta la lista di progetto.
 - 2026-11-01: niente canale Telegram per ora (troppo da gestire): prima vediamo come va X. Sul sito (pagine tester, footer, informativa, mail di benvenuto) il canale Telegram è sostituito dal profilo X https://x.com/Pasquale_im, per mostrare i post e che dietro c'è una persona. Commit del sito a532aea, online dal 1/11. Il canale t.me/unclock_it resta, ma non viene più linkato.
 - 2026-11-17: la home del sito diventa una pagina prodotto in stile Apple (telefono grande al centro sopra la scena, "Come funziona" a riquadri, fascia nera della privacy, movimento allo scorrimento; `site-product.css` solo sulle due home). Vista in anteprima da Pasquale, online dal 17/11 (sito f137d9c). Nessun post programmato mostrava la home vecchia.
+- 2026-11-25: tutte le automazioni social IN PAUSA su richiesta di Pasquale (vuole ripensare i passi: nessuno scarica l'app). Dettagli e come ripartire: `docs/social/AUTOMAZIONI.md`, "Stato".
 
 ## Task
 

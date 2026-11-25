@@ -4,6 +4,10 @@ Punto di partenza per qualunque problema sui post di X. Qui c'è l'elenco dei fl
 
 Se un flusso si rompe, basta dire a Claude quale ("non è arrivato l'avviso", "il post non è uscito", "le immagini non sono sul Pi"): da qui sa dove guardare.
 
+## Stato: IN PAUSA dal 25/11/2026
+
+Pasquale ha fermato tutto per ripensare i prossimi passi (nessuno scarica l'app; Reddit non è partito). Spenti: pianificata del venerdì (`unclock-post-x-settimana`, enabled false), routine cloud dei post X (`trig_01LG916LJiVKC3taXJ97s4go`) e delle cose a mano (`trig_01TPcFPZqj5TXoc8483dvj7L`). Il post X del 26/11 ("Stacca ora", Buffer `6b003a2b8f4d50958cc09f1e`) è in bozza su Buffer, non cancellato. Resta attiva solo la copia dei media sul Pi (innocua). Per ripartire: riattivare le tre e decidere cosa fare dei post in bozza e dei "pianificato" del calendario.
+
 ## I flussi in una riga
 
 | # | Flusso | Quando | Dove gira | Documento |
